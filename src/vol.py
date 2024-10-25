@@ -167,9 +167,7 @@ def distance_entre_pays(pays1, pays2):
         return None
 
 
-# Exemple d'utilisation
-
-
+# Calcul de la réservation
 def calculate_flight_price(
     data,
     company_name,
@@ -373,6 +371,18 @@ def book_flight(data):
         seat_selection=False,
     )
 
+    id_reservation = f"{vol['numero_vol']}-{vol['nombre_reservations'] + 1}"
+    prix_total = calculate_flight_price(
+        data,
+        compagnie["name"],
+        vol["numero_vol"],
+        pays_depart,
+        pays_arriver,
+        duration,
+        classe,
+        seat_selection=False,
+    )
+
     # reservation_number = f"{vol['numero_vol']}-{vol['nombre_reservations'] + 1}"
 
     # Confirmation de réservation
@@ -383,6 +393,10 @@ def book_flight(data):
         vol["places_disponibles"] -= nombre_places
         vol["nombre_reservations"] += 1
         enregistrer(data)
+        print(f"\nRéservation confirmée ! Numéro de réservation : {id_reservation}")
+        print(
+            f"{nombre_places} places réservées sur le vol {vol['numero_vol']} avec {compagnie['name']} à {prix_total:.2f} €."
+        )
         # print(f"\nRéservation confirmée ! Numéro de réservation : {reservation_number}")
         print(
             f"{nombre_places} places réservées sur le vol {vol['numero_vol']} avec {compagnie['name']} à {prix_total:.2f} €."
