@@ -124,7 +124,7 @@ def init():
 
 # Calcul du prix de vols :
 
-def calculate_flight_price(data, company_name, flight_number, distance, duration, travel_class, seat_selection):
+def calculate_flight_price(data, company_name, flight_number, distance, duration, travel_class="Economy", seat_selection=False):
     # Tarifs de base pour chaque compagnie
     base_prices = {
         "Air France": 150,
@@ -179,3 +179,11 @@ if __name__ == "__main__":
     print()
     data = init()
     enregistrer(data)
+
+    print("Bienvenu sur notre companie")
+    action = input("que voulez vous faire:")
+    match (action):
+        case "réserver":
+            pays_depart = input("entrez le pays de départ : ")
+            destination = input("entrez votre destination : ")
+            classe = input("selectionnez la classe du voyage : ")
