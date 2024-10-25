@@ -348,6 +348,42 @@ def book_flight(data):
     else:
         print("Réservation annulée.")
 
+def cancel_reservation(data):
+    # Étape 1 : Renseignement du numéro de vol et de réservation
+    numero_vol = input("Entrez le numéro de vol pour annuler la réservation (ex: AF754) : ")
+    id_reservation = input("Entrez le numéro de réservation complet (ex: AF754-1) : ")
+
+    # Recherche de la compagnie et du vol correspondant
+    for continent, companies in data["Company"].items():
+        for compagnie in companies:
+            for vol in compagnie["vols"]:
+                # Vérifie si le numéro de vol correspond
+                if vol["numero_vol"] == numero_vol:
+                    # Étape 2 : Vérifie si la réservation existe
+                    print("id_reservation", id_reservation)
+                    if f"{numero_vol}-{vol['nombre_reservations']}" == id_reservation:
+                        try:
+                            # Demander le nombre de places pour cette réservation
+                            nombre_places = int(input("Combien de places avez-vous réservé pour cette réservation ? "))
+
+                            # Étape 3 : Libérer les sièges et décrémenter le compteur de réservations
+                            vol["places_disponibles"] += nombre_places
+                            vol["nombre_reservations"] -= 1  # Décrémenter le nombre de réservations
+
+                            # Confirmation d'annulation
+                            enregistrer(data)  # Enregistrement des données mises à jour
+                            print(f"La réservation {id_reservation} a été annulée avec succès.")
+                            return
+                        except ValueError:
+                            print("Le nombre de places entré est incorrect.")
+                            return
+                    else:
+                        print("La réservation spécifiée n'existe pas ou a déjà été annulée.")
+                        return
+
+    # Si aucune correspondance n'a été trouvée
+    print("Aucun vol ou réservation correspondante trouvée.")
+
 
 if __name__ == "__main__":
     print()
@@ -362,3 +398,6 @@ if __name__ == "__main__":
             # pays_depart = input("entrez le pays de départ : ")
             # destination = input("entrez votre destination : ")
             # classe = input("selectionnez la classe du voyage : ")
+        case "annuler":
+            cancel_reservation(data)
+        # case "modifer":
