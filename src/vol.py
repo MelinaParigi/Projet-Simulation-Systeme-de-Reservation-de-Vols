@@ -3,6 +3,7 @@
 # deactivate
 # pip freeze > requirements.txt
 # pip install -r requirements.txt
+
 import pycountry
 import json
 from math import radians, sin, cos, sqrt, atan2
@@ -160,6 +161,21 @@ def init():
 
 # Calcul du prix de vols :
 def distance_entre_pays(pays1, pays2):
+    """
+    Calcule la distance en kilomètres entre deux pays en utilisant leurs noms.
+
+    La fonction utilise l'API OpenCage Geocode pour obtenir les coordonnées géographiques
+    (latitude et longitude) des capitales des pays spécifiés, puis applique la formule de Haversine
+    pour calculer la distance entre eux en kilomètres.
+
+    Paramètres:
+    pays1 (str): Le nom du premier pays.
+    pays2 (str): Le nom du second pays.
+
+    Retourne:
+    float: La distance en kilomètres entre les deux pays.
+           Retourne None si les coordonnées d'un pays ne sont pas trouvées.
+    """
     geocoder = OpenCageGeocode("b5072a154cba4479ba056f5b47d5bd7a")
 
     # Obtenir les coordonnées des deux pays
@@ -197,6 +213,38 @@ def calculate_flight_price(
     travel_class,
     seat_selection=False,
 ):
+    """
+    Calcule le prix total d'un vol en fonction de la compagnie aérienne, de la distance, de la durée,
+    de la classe de voyage et de la sélection de siège.
+
+    La fonction utilise des tarifs de base spécifiques à chaque compagnie, des coefficients pour
+    chaque classe de voyage, et des facteurs de coût basés sur la distance et la durée du vol.
+    Une option pour ajouter des frais de sélection de siège est également incluse.
+
+    Paramètres:
+    company_name (str): Nom de la compagnie aérienne.
+    flight_number (str): Numéro du vol.
+    pays_depart (str): Pays de départ du vol.
+    pays_arriver (str): Pays de destination du vol.
+    duration (float): Durée estimée du vol en heures.
+    travel_class (str): Classe de voyage, avec options "Economy", "Confort", ou "Business".
+    seat_selection (bool, optionnel): Indique si une sélection de siège est effectuée.
+                                      Par défaut à False.
+
+    Retourne:
+    float: Le prix total calculé du vol en euros.
+
+    Méthode:
+    1. Récupère la distance entre les pays de départ et d'arrivée à l'aide de `distance_entre_pays`.
+    2. Applique un tarif de base pour la compagnie et ajoute un coût basé sur la distance et la durée.
+    3. Multiplie le total par le coefficient de la classe de voyage (Economy, Confort, Business).
+    4. Ajoute un frais supplémentaire pour la sélection de siège si `seat_selection` est True.
+
+    Exemples de calcul:
+        - Distance Factor: 0.1 €/km
+        - Time Factor: 5 €/heure
+        - Frais de sélection de siège: 20 € si sélectionné.
+    """
     distance = distance_entre_pays(pays_depart, pays_arriver)
     # Tarifs de base pour chaque compagnie
     base_prices = {
@@ -239,18 +287,41 @@ def calculate_flight_price(
     return price
 
 
-# Exemple
-# data = init()
-# calculate_flight_price(data, "Air France", "AF123", 3000, 6, "Confort", True)
-
-
 def enregistrer(data):
+    """
+    Enregistre les données fournies dans un fichier JSON nommé 'data.json'.
+
+    Cette fonction prend un dictionnaire ou une structure de données en Python
+    et l'enregistre sous forme de fichier JSON avec une indentation de 4 espaces
+    pour améliorer la lisibilité.
+
+    Paramètres:
+    data (dict): Les données à enregistrer, sous forme de dictionnaire ou d'autre structure JSON-serializable.
+
+    Effets:
+    Crée un fichier 'data.json' dans le répertoire courant, écrasant tout fichier du même nom existant.
+    """
     with open("data.json", "w") as fichier:
         json.dump(data, fichier, indent=4)
 
 
 # Fonction pour estimer la durée du vol
 def estimate_flight_duration(pays_depart, pays_arriver):
+    """
+    Estime la durée d'un vol en heures entre deux pays en fonction de la distance qui les sépare.
+
+    La fonction utilise `distance_entre_pays` pour calculer la distance en kilomètres entre
+    les pays de départ et d'arrivée, puis divise cette distance par une vitesse moyenne de vol
+    (900 km/h) pour obtenir une estimation de la durée du vol.
+
+    Paramètres:
+    pays_depart (str): Le nom du pays de départ.
+    pays_arriver (str): Le nom du pays d'arrivée.
+
+    Retourne:
+    float: La durée estimée du vol en heures.
+           Retourne None si la distance ne peut pas être calculée.
+    """
     distance = distance_entre_pays(pays_depart, pays_arriver)
     if distance is None:
         return None
@@ -261,6 +332,24 @@ def estimate_flight_duration(pays_depart, pays_arriver):
 
 
 def book_flight(data):
+    """
+    Permet à un utilisateur de réserver un vol en suivant un processus interactif.
+
+    Cette fonction guide l'utilisateur à travers les étapes de réservation d'un vol :
+        1. Sélection du pays de départ et du pays d'arrivée.
+        2. Choix du continent, de la compagnie aérienne et du vol.
+        3. Sélection du nombre de places et de la classe de voyage.
+        4. Calcul du prix total et confirmation de la réservation.
+
+    Une fois la réservation confirmée, les informations de réservation sont enregistrées
+    et un billet de vol est généré avec les détails du vol.
+
+    Paramètres:
+    data (dict): Dictionnaire contenant les données des pays, des compagnies aériennes et des vols disponibles.
+
+    Retourne:
+    None
+    """
     # Étape 1 : Pays de départ et d'arrivée
     pays_depart = input("De quel pays voulez-vous partir ? ")
     pays_arriver = input("Vers quel pays voulez-vous arriver ? ")
@@ -404,7 +493,7 @@ def book_flight(data):
 
     id_reservation = f"{vol['numero_vol']}-{vol['nombre_reservations']}"
 
-    # Information users 
+    # Information users
     first_name = input("Entrez votre prénom : ")
     last_name = input("Entrez votre nom : ")
     email = input("Entrez votre email : ")
@@ -423,7 +512,9 @@ def book_flight(data):
             {"id_reservation": id_reservation, "nombre_personne": nombre_places}
         )
         enregistrer(data)
-        ajouter_utilisateur(users_data, first_name, last_name, email, phone_number, id_reservation)
+        ajouter_utilisateur(
+            users_data, first_name, last_name, email, phone_number, id_reservation
+        )
 
         print(f"\nRéservation confirmée ! Numéro de réservation : {id_reservation}")
         print(
@@ -450,6 +541,21 @@ def book_flight(data):
 
 # Annulation réservation
 def cancel_reservation(data):
+    """
+    Permet à un utilisateur d'annuler une réservation existante en utilisant un numéro de réservation.
+
+    La fonction recherche le vol associé au numéro de réservation fourni par l'utilisateur,
+    vérifie la confirmation de l'annulation et, si elle est confirmée, libère les places réservées
+    et met à jour les données en conséquence.
+
+    Si aucune réservation ne correspond au numéro fourni, un message d'erreur est affiché.
+
+    Paramètres:
+    data (dict): Dictionnaire contenant les informations de réservation et les détails des vols.
+
+    Retourne:
+    None
+    """
     id_reservation = input(
         "Veuillez entrer votre numéro de réservation (ex: AF403-0) : "
     )
@@ -504,6 +610,23 @@ def charger_donnees():
 
 
 if __name__ == "__main__":
+    """
+    Programme principal pour la gestion des réservations de vols.
+
+    Ce programme permet à l'utilisateur de :
+        1. Réserver un vol.
+        2. Annuler une réservation existante.
+        3. Quitter le programme.
+
+    Le programme charge les données nécessaires, puis affiche un menu interactif
+    permettant à l'utilisateur de choisir une action. Chaque action est associée
+    à une fonction spécifique pour gérer les réservations et les annulations.
+
+    Actions:
+    - "1" : Lance la fonction `book_flight(data)` pour réserver un vol.
+    - "2" : Lance la fonction `cancel_reservation(data)` pour annuler une réservation.
+    - "3" : Quitte le programme.
+    """
     data = charger_donnees()
     print("Bienvenue sur notre compagnie")
     while True:
