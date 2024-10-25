@@ -4,9 +4,7 @@
 # pip freeze > requirements.txt
 # pip install -r requirements.txt
 import pycountry
-
-countries = [country.name for country in pycountry.countries]
-print(countries)
+import json
 
 
 def init():
@@ -171,3 +169,13 @@ def calculate_flight_price(data, company_name, flight_number, distance, duration
 data = init()
 calculate_flight_price(data, "Air France", "AF123", 3000, 6, "Confort", True)
 
+
+def enregistrer(data):
+    with open("data.json", "w") as fichier:
+        json.dump(data, fichier, indent=4)
+
+
+if __name__ == "__main__":
+    print()
+    data = init()
+    enregistrer(data)
