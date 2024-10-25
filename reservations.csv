@@ -1,2 +1,3 @@
 id_reservation,first_name,last_name,email,phone_number,pays_depart,pays_arriver,classe,prix_total
 AM267-1,Sacha,Titi,sacha.com,0203020506,France,Japon,Confort,1395.712811535842
+LH803-0,Melina,Parigi,test@test.com,0102030405,Portugal,France,Confort,345.82066924163905

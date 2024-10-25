@@ -262,6 +262,10 @@
         {
             "id_reservation": "AM267-1",
             "nombre_personne": 1
+        },
+        {
+            "id_reservation": "LH803-0",
+            "nombre_personne": 2
         }
     ],
     "Company": {
@@ -351,8 +355,8 @@
                     },
                     {
                         "numero_vol": "LH803",
-                        "places_disponibles": 157,
-                        "nombre_reservations": 0
+                        "places_disponibles": 155,
+                        "nombre_reservations": 2
                     }
                 ]
             },
@@ -459,7 +463,7 @@
                     {
                         "numero_vol": "AV216",
                         "places_disponibles": 111,
-                        "nombre_reservations": 2
+                        "nombre_reservations": 4
                     },
                     {
                         "numero_vol": "AV938",
