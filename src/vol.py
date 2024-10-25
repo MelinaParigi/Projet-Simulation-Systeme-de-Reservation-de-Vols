@@ -17,7 +17,12 @@ def init():
 
     data = {
         "Pays": countries,
-        "id_reservation": [],  # Assurez-vous que 'countries' contient la liste des pays
+        "reservation": [
+            {
+                "id_reservation",
+                "nombre_personne"
+            }
+        ],
         "Company": {
             "Europe": [
                 {
@@ -382,7 +387,7 @@ def book_flight(data):
         seat_selection=False,
     )
 
-    # reservation_number = f"{vol['numero_vol']}-{vol['nombre_reservations'] + 1}"
+    id_reservation = f"{vol['numero_vol']}-{vol['nombre_reservations']}"
 
     # Confirmation de réservation
     confirmation = input(
@@ -391,12 +396,16 @@ def book_flight(data):
     if confirmation.lower() == "oui":
         vol["places_disponibles"] -= nombre_places
         vol["nombre_reservations"] += nombre_places
+        data["reservation"].append({
+            "id_reservation": id_reservation,
+            "nombre_personne": nombre_places
+        })
         enregistrer(data)
         print(f"\nRéservation confirmée ! Numéro de réservation : {id_reservation}")
         print(
             f"{nombre_places} places réservées sur le vol {vol['numero_vol']} avec {compagnie['name']} à {prix_total:.2f} €."
         )
-        # print(f"\nRéservation confirmée ! Numéro de réservation : {reservation_number}")
+        print(f"\nRéservation confirmée ! Numéro de réservation : {id_reservation}")
         print(
             f"""
     ===============================
@@ -419,6 +428,41 @@ def book_flight(data):
         print("Réservation annulée.")
 
 
+# Annulation réservation
+def cancel_reservation(data):
+    id_reservation = input("Veuillez entrer votre numéro de réservation (ex: AF403-0) : ")
+
+    numero_vol = id_reservation.split('-')[0]
+
+    correspondance_vol = False
+    for continent, companies in data["Company"].items():
+        for company in companies:
+            for vol in company["vols"]:
+                if vol["numero_vol"] == numero_vol:
+                    correspondance_vol = True
+
+                    confirmation = input(f"Vous êtes sûr de vouloir annuler votre réservation pour le vol {numero_vol} ? (oui/non) : ")
+                    if confirmation.lower() == "oui":
+
+                        for reservation in data["reservation"]:
+                            if reservation["id_reservation"] == id_reservation:
+                                nombre_personne = reservation["nombre_personne"]
+                                vol["places_disponibles"] += nombre_personne
+
+                                data["reservation"].remove(reservation)
+                                enregistrer(data)
+                                print(f"Réservation {id_reservation} annulée. {nombre_personne} place(s) libérée(s).")
+                                return
+                        print("Aucune réservation trouvée avec ce numéro de réservation.")
+                    else:
+                        print("Annulation de réservation annulée.")
+                    return
+
+    if not correspondance_vol:
+        print("Numéro de vol introuvable.")
+
+
+
 def charger_donnees():
     # Vérifiez si le fichier existe
     if os.path.exists("data.json"):
@@ -433,14 +477,24 @@ def charger_donnees():
 
 
 if __name__ == "__main__":
-
     data = charger_donnees()
-    print("Bienvenu sur notre companie")
+    print("Bienvenue sur notre compagnie")
     while True:
-        action = input("que voulez vous faire:")
-        match (action):
-            case "reserver":
+        print("\nActions disponibles :")
+        print("1. Réserver un vol")
+        print("2. Annuler une réservation")
+        print("3. Quitter")
+        
+        action = input("Que voulez-vous faire (tapez le numéro correspondant) : ")
+        
+        match action:
+            case "1":
                 book_flight(data)
-            case "quiter":
-                print("Merci Pour votre visite! à bientot")
+            case "2":
+                cancel_reservation(data)
+            case "3":
+                print("Merci pour votre visite ! À bientôt")
                 break
+            case _:
+                print("Action non reconnue. Veuillez choisir parmi les actions disponibles.")
+
