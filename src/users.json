@@ -9,6 +9,16 @@
             "reservation_id": [
                 "AF411-6"
             ]
+        },
+        {
+            "id_user": "amchabena6570",
+            "first_name": "Am",
+            "last_name": "CHABENA",
+            "email": "email.com",
+            "phone_number": "09989",
+            "reservation_id": [
+                "BA831-0"
+            ]
         }
     ]
 }

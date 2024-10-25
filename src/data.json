@@ -250,7 +250,12 @@
         "Zambia",
         "Zimbabwe"
     ],
-    "reservation": [],
+    "reservation": [
+        {
+            "id_reservation": "BA831-0",
+            "nombre_personne": 1
+        }
+    ],
     "Company": {
         "Europe": [
             {
@@ -288,8 +293,8 @@
                 "vols": [
                     {
                         "numero_vol": "BA831",
-                        "places_disponibles": 127,
-                        "nombre_reservations": 0
+                        "places_disponibles": 126,
+                        "nombre_reservations": 1
                     },
                     {
                         "numero_vol": "BA918",
