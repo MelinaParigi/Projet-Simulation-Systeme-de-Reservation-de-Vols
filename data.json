@@ -257,24 +257,29 @@
                 "name": "Air France",
                 "vols": [
                     {
-                        "numero_vol": "AF978",
-                        "places_disponibles": 99
+                        "numero_vol": "AF472",
+                        "places_disponibles": 154,
+                        "nombre_reservations": 0
                     },
                     {
-                        "numero_vol": "AF750",
-                        "places_disponibles": 154
+                        "numero_vol": "AF397",
+                        "places_disponibles": 93,
+                        "nombre_reservations": 0
                     },
                     {
-                        "numero_vol": "AF434",
-                        "places_disponibles": 134
+                        "numero_vol": "AF273",
+                        "places_disponibles": 146,
+                        "nombre_reservations": 0
                     },
                     {
-                        "numero_vol": "AF414",
-                        "places_disponibles": 50
+                        "numero_vol": "AF255",
+                        "places_disponibles": 186,
+                        "nombre_reservations": 0
                     },
                     {
-                        "numero_vol": "AF607",
-                        "places_disponibles": 187
+                        "numero_vol": "AF890",
+                        "places_disponibles": 127,
+                        "nombre_reservations": 0
                     }
                 ]
             },
@@ -282,24 +287,29 @@
                 "name": "British Airways",
                 "vols": [
                     {
-                        "numero_vol": "BA657",
-                        "places_disponibles": 182
+                        "numero_vol": "BA739",
+                        "places_disponibles": 119,
+                        "nombre_reservations": 0
                     },
                     {
-                        "numero_vol": "BA273",
-                        "places_disponibles": 90
+                        "numero_vol": "BA645",
+                        "places_disponibles": 157,
+                        "nombre_reservations": 0
                     },
                     {
-                        "numero_vol": "BA489",
-                        "places_disponibles": 66
+                        "numero_vol": "BA200",
+                        "places_disponibles": 133,
+                        "nombre_reservations": 0
                     },
                     {
-                        "numero_vol": "BA959",
-                        "places_disponibles": 180
+                        "numero_vol": "BA425",
+                        "places_disponibles": 173,
+                        "nombre_reservations": 0
                     },
                     {
-                        "numero_vol": "BA242",
-                        "places_disponibles": 83
+                        "numero_vol": "BA346",
+                        "places_disponibles": 135,
+                        "nombre_reservations": 0
                     }
                 ]
             },
@@ -307,24 +317,29 @@
                 "name": "Lufthansa",
                 "vols": [
                     {
-                        "numero_vol": "LH127",
-                        "places_disponibles": 152
+                        "numero_vol": "LH199",
+                        "places_disponibles": 67,
+                        "nombre_reservations": 0
                     },
                     {
-                        "numero_vol": "LH504",
-                        "places_disponibles": 123
+                        "numero_vol": "LH730",
+                        "places_disponibles": 80,
+                        "nombre_reservations": 0
                     },
                     {
-                        "numero_vol": "LH469",
-                        "places_disponibles": 116
+                        "numero_vol": "LH657",
+                        "places_disponibles": 142,
+                        "nombre_reservations": 0
                     },
                     {
-                        "numero_vol": "LH486",
-                        "places_disponibles": 54
+                        "numero_vol": "LH722",
+                        "places_disponibles": 189,
+                        "nombre_reservations": 0
                     },
                     {
-                        "numero_vol": "LH391",
-                        "places_disponibles": 58
+                        "numero_vol": "LH296",
+                        "places_disponibles": 158,
+                        "nombre_reservations": 0
                     }
                 ]
             },
@@ -332,24 +347,29 @@
                 "name": "KLM Royal Dutch Airlines",
                 "vols": [
                     {
-                        "numero_vol": "KL368",
-                        "places_disponibles": 190
+                        "numero_vol": "KL741",
+                        "places_disponibles": 81,
+                        "nombre_reservations": 0
                     },
                     {
-                        "numero_vol": "KL629",
-                        "places_disponibles": 121
+                        "numero_vol": "KL968",
+                        "places_disponibles": 91,
+                        "nombre_reservations": 0
                     },
                     {
-                        "numero_vol": "KL442",
-                        "places_disponibles": 164
+                        "numero_vol": "KL589",
+                        "places_disponibles": 195,
+                        "nombre_reservations": 0
                     },
                     {
-                        "numero_vol": "KL767",
-                        "places_disponibles": 194
+                        "numero_vol": "KL243",
+                        "places_disponibles": 95,
+                        "nombre_reservations": 0
                     },
                     {
-                        "numero_vol": "KL613",
-                        "places_disponibles": 187
+                        "numero_vol": "KL829",
+                        "places_disponibles": 78,
+                        "nombre_reservations": 0
                     }
                 ]
             },
@@ -357,24 +377,29 @@
                 "name": "Iberia",
                 "vols": [
                     {
-                        "numero_vol": "IB703",
-                        "places_disponibles": 96
+                        "numero_vol": "IB118",
+                        "places_disponibles": 66,
+                        "nombre_reservations": 0
                     },
                     {
-                        "numero_vol": "IB119",
-                        "places_disponibles": 180
+                        "numero_vol": "IB390",
+                        "places_disponibles": 187,
+                        "nombre_reservations": 0
                     },
                     {
-                        "numero_vol": "IB753",
-                        "places_disponibles": 185
+                        "numero_vol": "IB559",
+                        "places_disponibles": 89,
+                        "nombre_reservations": 0
                     },
                     {
-                        "numero_vol": "IB423",
-                        "places_disponibles": 182
+                        "numero_vol": "IB232",
+                        "places_disponibles": 107,
+                        "nombre_reservations": 0
                     },
                     {
-                        "numero_vol": "IB181",
-                        "places_disponibles": 137
+                        "numero_vol": "IB158",
+                        "places_disponibles": 149,
+                        "nombre_reservations": 0
                     }
                 ]
             }
@@ -384,24 +409,29 @@
                 "name": "LATAM Airlines",
                 "vols": [
                     {
-                        "numero_vol": "LA379",
-                        "places_disponibles": 76
+                        "numero_vol": "LA623",
+                        "places_disponibles": 95,
+                        "nombre_reservations": 0
                     },
                     {
-                        "numero_vol": "LA298",
-                        "places_disponibles": 132
+                        "numero_vol": "LA308",
+                        "places_disponibles": 186,
+                        "nombre_reservations": 0
                     },
                     {
-                        "numero_vol": "LA940",
-                        "places_disponibles": 140
+                        "numero_vol": "LA330",
+                        "places_disponibles": 162,
+                        "nombre_reservations": 0
                     },
                     {
-                        "numero_vol": "LA457",
-                        "places_disponibles": 132
+                        "numero_vol": "LA492",
+                        "places_disponibles": 185,
+                        "nombre_reservations": 0
                     },
                     {
-                        "numero_vol": "LA298",
-                        "places_disponibles": 180
+                        "numero_vol": "LA206",
+                        "places_disponibles": 154,
+                        "nombre_reservations": 0
                     }
                 ]
             },
@@ -409,24 +439,29 @@
                 "name": "Avianca",
                 "vols": [
                     {
-                        "numero_vol": "AV180",
-                        "places_disponibles": 147
+                        "numero_vol": "AV634",
+                        "places_disponibles": 123,
+                        "nombre_reservations": 0
                     },
                     {
-                        "numero_vol": "AV971",
-                        "places_disponibles": 161
+                        "numero_vol": "AV957",
+                        "places_disponibles": 140,
+                        "nombre_reservations": 0
                     },
                     {
-                        "numero_vol": "AV194",
-                        "places_disponibles": 63
+                        "numero_vol": "AV455",
+                        "places_disponibles": 91,
+                        "nombre_reservations": 0
                     },
                     {
-                        "numero_vol": "AV916",
-                        "places_disponibles": 159
+                        "numero_vol": "AV557",
+                        "places_disponibles": 64,
+                        "nombre_reservations": 0
                     },
                     {
-                        "numero_vol": "AV486",
-                        "places_disponibles": 68
+                        "numero_vol": "AV338",
+                        "places_disponibles": 92,
+                        "nombre_reservations": 0
                     }
                 ]
             },
@@ -434,24 +469,29 @@
                 "name": "Aerom\u00e9xico",
                 "vols": [
                     {
-                        "numero_vol": "AM479",
-                        "places_disponibles": 81
+                        "numero_vol": "AM809",
+                        "places_disponibles": 124,
+                        "nombre_reservations": 0
                     },
                     {
-                        "numero_vol": "AM763",
-                        "places_disponibles": 170
+                        "numero_vol": "AM936",
+                        "places_disponibles": 184,
+                        "nombre_reservations": 0
                     },
                     {
-                        "numero_vol": "AM571",
-                        "places_disponibles": 120
+                        "numero_vol": "AM293",
+                        "places_disponibles": 115,
+                        "nombre_reservations": 0
                     },
                     {
-                        "numero_vol": "AM618",
-                        "places_disponibles": 84
+                        "numero_vol": "AM156",
+                        "places_disponibles": 144,
+                        "nombre_reservations": 0
                     },
                     {
-                        "numero_vol": "AM560",
-                        "places_disponibles": 142
+                        "numero_vol": "AM510",
+                        "places_disponibles": 139,
+                        "nombre_reservations": 0
                     }
                 ]
             },
@@ -459,24 +499,29 @@
                 "name": "Copa Airlines",
                 "vols": [
                     {
-                        "numero_vol": "CM988",
-                        "places_disponibles": 127
+                        "numero_vol": "CM403",
+                        "places_disponibles": 195,
+                        "nombre_reservations": 0
                     },
                     {
-                        "numero_vol": "CM124",
-                        "places_disponibles": 164
+                        "numero_vol": "CM906",
+                        "places_disponibles": 180,
+                        "nombre_reservations": 0
                     },
                     {
-                        "numero_vol": "CM327",
-                        "places_disponibles": 60
+                        "numero_vol": "CM700",
+                        "places_disponibles": 62,
+                        "nombre_reservations": 0
                     },
                     {
-                        "numero_vol": "CM853",
-                        "places_disponibles": 61
+                        "numero_vol": "CM435",
+                        "places_disponibles": 67,
+                        "nombre_reservations": 0
                     },
                     {
-                        "numero_vol": "CM452",
-                        "places_disponibles": 67
+                        "numero_vol": "CM440",
+                        "places_disponibles": 187,
+                        "nombre_reservations": 0
                     }
                 ]
             },
@@ -484,24 +529,29 @@
                 "name": "Gol Linhas A\u00e9reas",
                 "vols": [
                     {
-                        "numero_vol": "G3116",
-                        "places_disponibles": 140
+                        "numero_vol": "G3274",
+                        "places_disponibles": 154,
+                        "nombre_reservations": 0
+                    },
+                    {
+                        "numero_vol": "G3594",
+                        "places_disponibles": 167,
+                        "nombre_reservations": 0
+                    },
+                    {
+                        "numero_vol": "G3664",
+                        "places_disponibles": 176,
+                        "nombre_reservations": 0
+                    },
+                    {
+                        "numero_vol": "G3660",
+                        "places_disponibles": 174,
+                        "nombre_reservations": 0
                     },
                     {
                         "numero_vol": "G3188",
-                        "places_disponibles": 158
-                    },
-                    {
-                        "numero_vol": "G3519",
-                        "places_disponibles": 60
-                    },
-                    {
-                        "numero_vol": "G3281",
-                        "places_disponibles": 97
-                    },
-                    {
-                        "numero_vol": "G3381",
-                        "places_disponibles": 102
+                        "places_disponibles": 195,
+                        "nombre_reservations": 0
                     }
                 ]
             }

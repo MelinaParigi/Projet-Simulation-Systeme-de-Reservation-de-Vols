@@ -25,6 +25,7 @@ def init():
                         {
                             "numero_vol": f"AF{random.randint(100, 999)}",
                             "places_disponibles": random.randint(50, 200),
+                            "nombre_reservations": 0
                         }
                         for _ in range(5)
                     ],
@@ -35,6 +36,7 @@ def init():
                         {
                             "numero_vol": f"BA{random.randint(100, 999)}",
                             "places_disponibles": random.randint(50, 200),
+                            "nombre_reservations": 0
                         }
                         for _ in range(5)
                     ],
@@ -45,6 +47,7 @@ def init():
                         {
                             "numero_vol": f"LH{random.randint(100, 999)}",
                             "places_disponibles": random.randint(50, 200),
+                            "nombre_reservations": 0
                         }
                         for _ in range(5)
                     ],
@@ -55,6 +58,7 @@ def init():
                         {
                             "numero_vol": f"KL{random.randint(100, 999)}",
                             "places_disponibles": random.randint(50, 200),
+                            "nombre_reservations": 0
                         }
                         for _ in range(5)
                     ],
@@ -65,6 +69,7 @@ def init():
                         {
                             "numero_vol": f"IB{random.randint(100, 999)}",
                             "places_disponibles": random.randint(50, 200),
+                            "nombre_reservations": 0
                         }
                         for _ in range(5)
                     ],
@@ -77,6 +82,7 @@ def init():
                         {
                             "numero_vol": f"LA{random.randint(100, 999)}",
                             "places_disponibles": random.randint(50, 200),
+                            "nombre_reservations": 0
                         }
                         for _ in range(5)
                     ],
@@ -87,6 +93,7 @@ def init():
                         {
                             "numero_vol": f"AV{random.randint(100, 999)}",
                             "places_disponibles": random.randint(50, 200),
+                            "nombre_reservations": 0
                         }
                         for _ in range(5)
                     ],
@@ -97,6 +104,7 @@ def init():
                         {
                             "numero_vol": f"AM{random.randint(100, 999)}",
                             "places_disponibles": random.randint(50, 200),
+                            "nombre_reservations": 0
                         }
                         for _ in range(5)
                     ],
@@ -107,6 +115,7 @@ def init():
                         {
                             "numero_vol": f"CM{random.randint(100, 999)}",
                             "places_disponibles": random.randint(50, 200),
+                            "nombre_reservations": 0
                         }
                         for _ in range(5)
                     ],
@@ -117,6 +126,7 @@ def init():
                         {
                             "numero_vol": f"G3{random.randint(100, 999)}",
                             "places_disponibles": random.randint(50, 200),
+                            "nombre_reservations": 0
                         }
                         for _ in range(5)
                     ],
@@ -155,10 +165,7 @@ def distance_entre_pays(pays1, pays2):
         print("Coordonnées non trouvées pour un ou les deux pays.")
         return None
 
-
-# Exemple d'utilisation
-
-
+# Calcul de la réservation
 def calculate_flight_price(
     data,
     company_name,
@@ -209,10 +216,6 @@ def calculate_flight_price(
     print(f"Prix calculé : {price:.2f} €")
 
     return price
-
-# Exemple 
-# data = init()
-# calculate_flight_price(data, "Air France", "AF123", 3000, 6, "Confort", True)
 
 
 def enregistrer(data):
@@ -332,7 +335,7 @@ def book_flight(data):
     duration = estimate_flight_duration(pays_depart, pays_arriver)
     prix_total = calculate_flight_price(data, compagnie["name"], vol["numero_vol"], pays_depart, pays_arriver, duration, classe, seat_selection=False)
     
-    # reservation_number = f"{vol['numero_vol']}-{vol['nombre_reservations'] + 1}"
+    id_reservation = f"{vol['numero_vol']}-{vol['nombre_reservations'] + 1}"
 
     # Confirmation de réservation
     confirmation = input(f"\nLe prix total est de {prix_total:.2f} €. Confirmez-vous la réservation ? (oui/non) : ")
@@ -340,7 +343,7 @@ def book_flight(data):
         vol["places_disponibles"] -= nombre_places
         vol["nombre_reservations"] += 1
         enregistrer(data)
-        # print(f"\nRéservation confirmée ! Numéro de réservation : {reservation_number}")
+        print(f"\nRéservation confirmée ! Numéro de réservation : {id_reservation}")
         print(f"{nombre_places} places réservées sur le vol {vol['numero_vol']} avec {compagnie['name']} à {prix_total:.2f} €.")
     else:
         print("Réservation annulée.")
