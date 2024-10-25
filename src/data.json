@@ -258,8 +258,8 @@
                 "vols": [
                     {
                         "numero_vol": "AF411",
-                        "places_disponibles": 132,
-                        "nombre_reservations": 1
+                        "places_disponibles": 127,
+                        "nombre_reservations": 6
                     },
                     {
                         "numero_vol": "AF523",
@@ -535,8 +535,8 @@
                     },
                     {
                         "numero_vol": "G3907",
-                        "places_disponibles": 94,
-                        "nombre_reservations": 0
+                        "places_disponibles": 91,
+                        "nombre_reservations": 3
                     },
                     {
                         "numero_vol": "G3251",

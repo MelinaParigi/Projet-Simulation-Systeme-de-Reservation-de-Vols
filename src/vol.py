@@ -169,13 +169,12 @@ def distance_entre_pays(pays1, pays2):
 
 # Calcul de la réservation
 def calculate_flight_price(
-    data,
     company_name,
     flight_number,
     pays_depart,
     pays_arriver,
     duration,
-    travel_class="Economy",
+    travel_class,
     seat_selection=False,
 ):
     distance = distance_entre_pays(pays_depart, pays_arriver)
@@ -399,8 +398,23 @@ def book_flight(data):
         )
         # print(f"\nRéservation confirmée ! Numéro de réservation : {reservation_number}")
         print(
-            f"{nombre_places} places réservées sur le vol {vol['numero_vol']} avec {compagnie['name']} à {prix_total:.2f} €."
+            f"""
+    ===============================
+            Billet de Vol         
+    ===============================
+
+    Départ       : {pays_depart}
+    Destination  : {pays_arriver}
+    Durée        : {int(duration)} heures
+    Classe       : {classe}
+    Prix Total   : {int(prix_total)} €
+
+    ===============================
+    Merci d'avoir choisi notre service !
+    ===============================
+    """
         )
+
     else:
         print("Réservation annulée.")
 
