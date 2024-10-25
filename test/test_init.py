@@ -17,19 +17,26 @@ def test_init_structure():
     # Vérifie si les clés principales sont présentes
     assert "Pays" in data, "La clé 'Pays' doit être présente dans les données"
     assert (
-        "id_reservation" in data
-    ), "La clé 'id_reservation' doit être présente dans les données"
+        "reservation" in data
+    ), "La clé 'reservation' doit être présente dans les données"
     assert "Company" in data, "La clé 'Company' doit être présente dans les données"
 
     # Vérifie que 'Pays' est une liste non vide
     assert isinstance(data["Pays"], list), "'Pays' doit être une liste"
     assert len(data["Pays"]) > 0, "'Pays' doit contenir des noms de pays"
 
-    # Vérifie que 'id_reservation' est une liste (initialement vide)
-    assert isinstance(
-        data["id_reservation"], list
-    ), "'id_reservation' doit être une liste"
-    assert len(data["id_reservation"]) == 0, "'id_reservation' doit être vide au départ"
+    # Vérifie que 'reservation' est une liste et qu'elle contient la structure correcte
+    assert isinstance(data["reservation"], list), "'reservation' doit être une liste"
+    assert (
+        len(data["reservation"]) > 0
+    ), "'reservation' doit contenir au moins une structure"
+    for reservation in data["reservation"]:
+        assert (
+            "id_reservation" in reservation
+        ), "Chaque réservation doit avoir un 'id_reservation'"
+        assert (
+            "nombre_personne" in reservation
+        ), "Chaque réservation doit avoir un 'nombre_personne'"
 
     # Vérifie la structure de 'Company'
     assert isinstance(data["Company"], dict), "'Company' doit être un dictionnaire"

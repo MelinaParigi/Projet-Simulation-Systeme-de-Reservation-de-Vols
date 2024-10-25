@@ -9,20 +9,33 @@ from math import radians, sin, cos, sqrt, atan2
 from geopy.geocoders import Nominatim
 from opencage.geocoder import OpenCageGeocode
 import os
+import random
 
 
 def init():
+    """
+    Initialise et génère une structure de données contenant des informations sur les pays, les compagnies aériennes et les vols disponibles.
+
+    Retourne un dictionnaire avec les éléments suivants :
+        - "Pays": Une liste de tous les pays (chaîne de caractères) utilisant `pycountry`.
+        - "reservation": Une liste contenant les champs pour une réservation individuelle, incluant :
+            - "id_reservation": Identifiant unique pour une réservation (à définir ultérieurement).
+            - "nombre_personne": Nombre de personnes associées à une réservation (à définir ultérieurement).
+        - "Company": Un dictionnaire organisé par région (Europe, Amérique Latine), chaque région contenant une liste de compagnies aériennes, avec :
+            - "name": Le nom de la compagnie aérienne (chaîne de caractères).
+            - "vols": Une liste de vols disponibles pour chaque compagnie, où chaque vol comprend :
+                - "numero_vol": Numéro du vol (chaîne de caractères, générée aléatoirement).
+                - "places_disponibles": Nombre de places disponibles pour le vol (entier aléatoire entre 50 et 200).
+                - "nombre_reservations": Nombre de réservations initialisées pour le vol (commence à 0).
+
+    Retourne:
+        dict : Un dictionnaire structuré contenant les informations sur les pays, les réservations, les compagnies aériennes, et les vols.
+    """
     countries = [country.name for country in pycountry.countries]
-    import random
 
     data = {
         "Pays": countries,
-        "reservation": [
-            {
-                "id_reservation",
-                "nombre_personne"
-            }
-        ],
+        "reservation": [{"id_reservation", "nombre_personne"}],
         "Company": {
             "Europe": [
                 {
@@ -396,10 +409,9 @@ def book_flight(data):
     if confirmation.lower() == "oui":
         vol["places_disponibles"] -= nombre_places
         vol["nombre_reservations"] += nombre_places
-        data["reservation"].append({
-            "id_reservation": id_reservation,
-            "nombre_personne": nombre_places
-        })
+        data["reservation"].append(
+            {"id_reservation": id_reservation, "nombre_personne": nombre_places}
+        )
         enregistrer(data)
         print(f"\nRéservation confirmée ! Numéro de réservation : {id_reservation}")
         print(
@@ -430,9 +442,11 @@ def book_flight(data):
 
 # Annulation réservation
 def cancel_reservation(data):
-    id_reservation = input("Veuillez entrer votre numéro de réservation (ex: AF403-0) : ")
+    id_reservation = input(
+        "Veuillez entrer votre numéro de réservation (ex: AF403-0) : "
+    )
 
-    numero_vol = id_reservation.split('-')[0]
+    numero_vol = id_reservation.split("-")[0]
 
     correspondance_vol = False
     for continent, companies in data["Company"].items():
@@ -441,7 +455,9 @@ def cancel_reservation(data):
                 if vol["numero_vol"] == numero_vol:
                     correspondance_vol = True
 
-                    confirmation = input(f"Vous êtes sûr de vouloir annuler votre réservation pour le vol {numero_vol} ? (oui/non) : ")
+                    confirmation = input(
+                        f"Vous êtes sûr de vouloir annuler votre réservation pour le vol {numero_vol} ? (oui/non) : "
+                    )
                     if confirmation.lower() == "oui":
 
                         for reservation in data["reservation"]:
@@ -451,16 +467,19 @@ def cancel_reservation(data):
 
                                 data["reservation"].remove(reservation)
                                 enregistrer(data)
-                                print(f"Réservation {id_reservation} annulée. {nombre_personne} place(s) libérée(s).")
+                                print(
+                                    f"Réservation {id_reservation} annulée. {nombre_personne} place(s) libérée(s)."
+                                )
                                 return
-                        print("Aucune réservation trouvée avec ce numéro de réservation.")
+                        print(
+                            "Aucune réservation trouvée avec ce numéro de réservation."
+                        )
                     else:
                         print("Annulation de réservation annulée.")
                     return
 
     if not correspondance_vol:
         print("Numéro de vol introuvable.")
-
 
 
 def charger_donnees():
@@ -484,9 +503,9 @@ if __name__ == "__main__":
         print("1. Réserver un vol")
         print("2. Annuler une réservation")
         print("3. Quitter")
-        
+
         action = input("Que voulez-vous faire (tapez le numéro correspondant) : ")
-        
+
         match action:
             case "1":
                 book_flight(data)
@@ -496,5 +515,6 @@ if __name__ == "__main__":
                 print("Merci pour votre visite ! À bientôt")
                 break
             case _:
-                print("Action non reconnue. Veuillez choisir parmi les actions disponibles.")
-
+                print(
+                    "Action non reconnue. Veuillez choisir parmi les actions disponibles."
+                )
