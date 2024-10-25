@@ -11,6 +11,7 @@ from geopy.geocoders import Nominatim
 from opencage.geocoder import OpenCageGeocode
 import os
 import random
+import csv
 
 from users import init_users, ajouter_utilisateur
 
@@ -339,6 +340,36 @@ def estimate_flight_duration(pays_depart, pays_arriver):
     return duration
 
 
+
+def save_to_csv(booking_data, filename='reservations.csv'):
+    """
+    Enregistre les informations de réservation dans un fichier CSV.
+
+    Paramètres:
+    booking_data (dict): Dictionnaire contenant les informations de réservation.
+    filename (str): Le nom du fichier CSV dans lequel les données seront enregistrées.
+    """
+    fieldnames = ['id_reservation', 'first_name', 'last_name', 'email', 'phone_number', 'pays_depart', 'pays_arriver', 'classe', 'prix_total']
+    
+    # Vérifie si le fichier existe déjà pour écrire l'en-tête
+    file_exists = False
+    try:
+        with open(filename, 'r'):
+            file_exists = True
+    except FileNotFoundError:
+        pass
+
+    with open(filename, mode='a', newline='', encoding='utf-8') as file:
+        writer = csv.DictWriter(file, fieldnames=fieldnames)
+
+        # Écrire l'en-tête seulement si le fichier n'existe pas encore
+        if not file_exists:
+            writer.writeheader()
+
+        writer.writerow(booking_data)
+
+
+
 def book_flight(data):
     """
     Permet à un utilisateur de réserver un vol en suivant un processus interactif.
@@ -517,6 +548,22 @@ def book_flight(data):
         data["reservation"].append(
             {"id_reservation": id_reservation, "nombre_personne": nombre_places}
         )
+
+        
+        booking_data = {
+            'id_reservation': id_reservation,
+            'first_name': first_name,
+            'last_name': last_name,
+            'email': email,
+            'phone_number': phone_number,
+            'pays_depart': pays_depart,
+            'pays_arriver': pays_arriver,
+            'classe': classe,
+            'prix_total': prix_total
+        }
+
+        # Enregistrer les informations de réservation dans le fichier CSV
+        save_to_csv(booking_data)
         enregistrer(data)
         ajouter_utilisateur(
             users_data, first_name, last_name, email, phone_number, id_reservation

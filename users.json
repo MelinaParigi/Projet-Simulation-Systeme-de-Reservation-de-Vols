@@ -10,6 +10,46 @@
                 "AF403-10",
                 "AF403-13"
             ]
+        },
+        {
+            "id_user": "johndoe3117",
+            "first_name": "John",
+            "last_name": "Doe",
+            "email": "johndoe@gmail.com",
+            "phone_number": "0205040605",
+            "reservation_id": [
+                "AF403-18"
+            ]
+        },
+        {
+            "id_user": "testtest2576",
+            "first_name": "Test",
+            "last_name": "test",
+            "email": "test@gmail.com",
+            "phone_number": "0504060504",
+            "reservation_id": [
+                "CM508-0"
+            ]
+        },
+        {
+            "id_user": "jojojiji6694",
+            "first_name": "Jojo",
+            "last_name": "jiji",
+            "email": "jijijojo@gmail.com",
+            "phone_number": "0102040507",
+            "reservation_id": [
+                "CM444-0"
+            ]
+        },
+        {
+            "id_user": "alexjean5014",
+            "first_name": "Alex",
+            "last_name": "Jean",
+            "email": "jean@gmail.Com",
+            "phone_number": "0202020202",
+            "reservation_id": [
+                "AF403-19"
+            ]
         }
     ]
 }
