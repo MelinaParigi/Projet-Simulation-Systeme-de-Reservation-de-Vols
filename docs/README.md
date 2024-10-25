@@ -4,6 +4,7 @@
 
 Ce projet est un simulateur de réservation de vols permettant de choisir une destination, sélectionner une compagnie aérienne, déterminer une classe de voyage, choisir des sièges, et générer un billet avec tous les détails de vol et le calcul de prix.
 
+
 ## Fonctionnalités
 
 - **Liste des Pays** : Sélection de la destination à partir d'une liste complète des pays du monde.
@@ -15,6 +16,27 @@ Ce projet est un simulateur de réservation de vols permettant de choisir une de
   - Classe de voyage (Business, Economy, Confort, etc.)
   - Sélection de siège spécifique
 - **Billet d'Avion** : Impression d'un billet détaillé contenant toutes les informations essentielles de la réservation.
+
+## Installation
+### Prérequis
+- Python 3.x
+- Bibliothèques nécessaires : voir `requirements.txt`
+
+### Installation
+
+Clonez ce projet et installez les dépendances avec les commandes suivantes :
+
+```bash
+git clone <url-du-repo>
+cd <nom-du-repo>
+pip install -r requirements.txt
+
+## Utilisation
+
+Lancez l’application avec la commande suivante :
+
+```bash
+python vol.py
 
 ## Calcul du Prix du Billet 🎫
 
@@ -37,27 +59,46 @@ Voici la formule pour calculer le prix final :
 
 #### Détails de la Formule
 
-- **Tarif de Base Compagnie** : Prix de départ en fonction de la compagnie (par exemple, `150 €` pour une compagnie régulière).
-- **Distance** : Distance entre les deux pays en kilomètres (par exemple, `3000 km`).
-- **Facteur Distance** : Multiplicateur par kilomètre (par exemple, `0.1 €/km`).
-- **Durée** : Heure du trajet en heures (par exemple, `6 heures`).
-- **Facteur Temps** : Multiplicateur par heure de vol (par exemple, `5 €/heure`).
+- **Tarif de Base Compagnie** : Dépend de la compagnie choisie (par exemple, 150 € pour une compagnie standard).
+- **Distance** : Distance entre l’aéroport de départ et l’aéroport de destination en kilomètres.
+- **Facteur Distance** : Multiplicateur par kilomètre (par exemple, 0.1 €/km).
+- **Durée** : Durée du trajet en heures.
+- **Facteur Temps** : Multiplicateur par heure de vol (par exemple, 5 €/heure).
 - **Facteur Classe** :
-  - `Economy` : `1.0`
-  - `Confort` : `1.2`
-  - `Business` : `1.5`
-- **Supplément Siège** : Frais supplémentaire si un siège spécifique est choisi (par exemple, `20 €` pour un siège avec espace supplémentaire).
+  - Economy : 1.0
+  - Confort : 1.2
+  - Business : 1.5
+- **Supplément Siège** : Frais supplémentaire pour un siège spécifique (par exemple, 20 €).
 
 ### Exemple de Calcul
 
-Pour un vol de `3000 km`, d'une durée de `6 heures`, avec la compagnie `Air Voyage` ayant un tarif de base de `150 €`, en classe `Confort`, et avec un siège spécifique :
+**Exemple de Calcul du Prix du Billet :**
 
-\[
-\text{Prix Final} = \left(150 + (3000 \times 0.1) + (6 \times 5)\right) \times 1.2 + 20
-\]
-\[
-\text{Prix Final} = (150 + 300 + 30) \times 1.2 + 20 = 576 €
-\]
+Pour un vol de **3000 km**, d'une durée de **6 heures**, avec la compagnie **Air Voyage** ayant un tarif de base de **150 €**, en classe **Confort**, et avec un siège spécifique, le calcul serait :
+
+1. **Tarif de Base Compagnie** : 150 €
+2. **Distance** : 3000 km, avec un facteur de 0.1 €/km, soit :
+   - 3000 km × 0.1 €/km = 300 €
+3. **Durée** : 6 heures, avec un facteur de 5 €/heure, soit :
+   - 6 heures × 5 €/heure = 30 €
+4. **Facteur Classe** pour la classe **Confort** : 1.2
+5. **Supplément Siège** : 20 €
+
+En appliquant la formule complète :
+
+**Prix Final** = (Tarif de Base Compagnie + (Distance × Facteur Distance) + (Durée × Facteur Temps)) × Facteur Classe + Supplément Siège
+
+Ce qui donne :
+
+**Prix Final** = (150 + 300 + 30) × 1.2 + 20
+
+**Prix Final** = 480 × 1.2 + 20
+
+**Prix Final** = 576 €
+
+---
+
+Ainsi, le prix total pour ce vol serait **576 €**.
 
 ## Format du Billet 🎟️
 
@@ -73,7 +114,7 @@ Le billet généré inclura les informations suivantes :
 
 ```
 ===============================
-          Billet de Vol         
+          Billet de Vol
 ===============================
 
 Départ       : France
@@ -86,5 +127,48 @@ Prix Total   : 576 €
 Merci d'avoir choisi notre service !
 ===============================
 ```
+
+### Instructions Utilisateur
+
+1. **Choisissez votre destination** : Sélectionnez un pays dans la liste des destinations disponibles.
+2. **Sélectionnez la compagnie aérienne et le vol** : Choisissez parmi les options de compagnies disponibles pour cette destination.
+3. **Choisissez la classe de voyage** : Sélectionnez votre classe (Economy, Confort, Business).
+4. **Sélectionnez votre siège** : Option pour choisir un siège spécifique avec des frais supplémentaires.
+5. **Confirmez votre réservation** : Génération du billet avec tous les détails et le prix final.
+
+### Exemple de scénario
+
+Pour un vol de **3000 km**, d'une durée de **6 heures**, avec la compagnie **Air Voyage**, en classe **Confort**, et avec un siège spécifique, le calcul serait le suivant :
+
+1. **Tarif de Base Compagnie** : 150 €
+2. **Distance** : 3000 km avec un facteur de 0.1 €/km, soit :
+   - 3000 km × 0.1 €/km = 300 €
+3. **Durée** : 6 heures avec un facteur de 5 €/heure, soit :
+   - 6 heures × 5 €/heure = 30 €
+4. **Facteur Classe** pour la classe **Confort** : 1.2
+5. **Supplément Siège** : 20 €
+
+La formule complète devient :
+
+**Prix Final** = (150 + 300 + 30) × 1.2 + 20
+
+**Prix Final** = 576 €
+
+Ainsi, le prix total pour ce vol serait de **576 €**.
+
+## Contributions
+
+Les contributions sont les bienvenues ! Veuillez suivre ces étapes pour contribuer :
+
+1. Forkez le projet.
+2. Créez une branche pour votre fonctionnalité (`git checkout -b feature/AmazingFeature`).
+3. Commitez vos changements (`git commit -m 'Add some AmazingFeature'`).
+4. Pushez vers la branche (`git push origin feature/AmazingFeature`).
+5. Ouvrez une Pull Request.
+
+## Auteurs et Crédits
+
+- **Auteur** : Amine CHABANE, Mélina
+- **Remerciements** : La prof, w3school, youtube.
 
 ---

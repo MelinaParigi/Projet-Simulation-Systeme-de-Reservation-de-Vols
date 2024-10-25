@@ -18,7 +18,7 @@ en raison de la nature des opérations en virgule flottante.
 sys.path.insert(
     0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "src"))
 )
-from vol import calculate_flight_price, estimate_flight_duration, distance_entre_pays
+from vol import calculate_flight_price
 
 
 def test_calculate_flight_price_economy_no_seat_select():
