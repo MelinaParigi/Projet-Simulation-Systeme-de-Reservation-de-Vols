@@ -250,7 +250,7 @@
         "Zambia",
         "Zimbabwe"
     ],
-    "id_reservation": [],
+    "reservation": [],
     "Company": {
         "Europe": [
             {
@@ -258,8 +258,8 @@
                 "vols": [
                     {
                         "numero_vol": "AF403",
-                        "places_disponibles": 112,
-                        "nombre_reservations": 0
+                        "places_disponibles": 110,
+                        "nombre_reservations": 5
                     },
                     {
                         "numero_vol": "AF295",
