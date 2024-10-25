@@ -40,10 +40,11 @@ Ce projet utilise `pytest` pour les tests unitaires. Assurez-vous que `pytest` e
 
 ```
 pip install pytest
-````
+```
 
 sur un terminal 
-````
+
+```
 cd <nom-repo-tests>
 pytest
 ```
