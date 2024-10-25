@@ -1,0 +1,17 @@
+{
+    "reservation": [],
+    "Company": {
+        "Europe": [
+            {
+                "name": "Air Test",
+                "vols": [
+                    {
+                        "numero_vol": "AT123",
+                        "places_disponibles": 102,
+                        "nombre_reservations": 1
+                    }
+                ]
+            }
+        ]
+    }
+}
