@@ -170,7 +170,7 @@ Les contributions sont les bienvenues ! Veuillez suivre ces étapes pour contrib
 
 ## Auteurs et Crédits
 
-- **Auteur** : Amine CHABANE, Mélina
+- **Auteur** : Amine CHABANE, Mélina Parigi
 - **Remerciements** : La prof, w3school, youtube.
 
 ---
