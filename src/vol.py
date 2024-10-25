@@ -168,6 +168,14 @@ def distance_entre_pays(pays1, pays2):
     (latitude et longitude) des capitales des pays spécifiés, puis applique la formule de Haversine
     pour calculer la distance entre eux en kilomètres.
 
+    Pour utiliser cette fonction, vous devez obtenir une clé API de l'API OpenCage Geocode.
+
+    Étapes pour obtenir une clé API OpenCage:
+    1. Allez sur https://opencagedata.com/ et créez un compte en cliquant sur “Sign Up”.
+    2. Choisissez le plan gratuit ou un plan payant selon vos besoins.
+    3. Une fois inscrit, allez dans votre tableau de bord et récupérez la clé API qui vous est attribuée.
+    4. Remplacez la clé dans le code par la vôtre (ligne avec OpenCageGeocode("YOUR_API_KEY")).
+
     Paramètres:
     pays1 (str): Le nom du premier pays.
     pays2 (str): Le nom du second pays.
@@ -469,7 +477,6 @@ def book_flight(data):
     # Calcul du prix et numéro de réservation
     duration = estimate_flight_duration(pays_depart, pays_arriver)
     prix_total = calculate_flight_price(
-        data,
         compagnie["name"],
         vol["numero_vol"],
         pays_depart,
@@ -481,7 +488,6 @@ def book_flight(data):
 
     id_reservation = f"{vol['numero_vol']}-{vol['nombre_reservations'] + 1}"
     prix_total = calculate_flight_price(
-        data,
         compagnie["name"],
         vol["numero_vol"],
         pays_depart,

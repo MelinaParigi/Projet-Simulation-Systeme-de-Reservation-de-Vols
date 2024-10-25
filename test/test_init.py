@@ -7,10 +7,42 @@ sys.path.insert(
 )
 from vol import init
 
+"""
+Tests pour vérifier la structure de données générée par la fonction init.
+
+Ces tests valident que la fonction init retourne une structure de données correcte,
+comprenant les informations principales sur les pays, les réservations, et les compagnies 
+aériennes par région. Le test vérifie la présence des clés et des types de données attendus 
+ainsi que certaines contraintes sur les valeurs.
+"""
+
 # Remplacez 'your_module' par le nom du fichier contenant la fonction
 
 
 def test_init_structure():
+    """
+    Teste la structure et la cohérence des données retournées par la fonction init.
+
+    La fonction init est supposée retourner un dictionnaire contenant trois clés principales :
+    - 'Pays' : une liste de noms de pays.
+    - 'reservation' : une liste de structures de réservation avec des champs spécifiques.
+    - 'Company' : un dictionnaire de compagnies aériennes, classées par région.
+
+    Les vérifications incluent :
+    1. Présence des clés principales ('Pays', 'reservation', 'Company').
+    2. Type et contenu de 'Pays' (doit être une liste non vide).
+    3. Structure de 'reservation' : doit être une liste contenant des dictionnaires avec les clés
+       'id_reservation' et 'nombre_personne'.
+    4. Structure de 'Company' : doit être un dictionnaire avec des clés de région (comme 'Europe',
+       'Amérique Latine'), chacune associée à une liste de compagnies aériennes.
+    5. Chaque compagnie doit contenir une clé 'name' et une liste 'vols', où chaque vol doit avoir
+       les clés 'numero_vol', 'places_disponibles', et 'nombre_reservations'.
+    6. Contraintes de valeurs :
+       - 'places_disponibles' doit être un entier entre 50 et 200.
+       - 'nombre_reservations' doit être initialisé à 0.
+
+    Le test échoue si l'une des conditions ci-dessus n'est pas respectée.
+    """
     # Appel de la fonction pour obtenir les données
     data = init()
 

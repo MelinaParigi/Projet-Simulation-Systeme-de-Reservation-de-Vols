@@ -1,0 +1,14 @@
+{
+    "users": [
+        {
+            "id_user": "aminechabane9227",
+            "first_name": "Amine",
+            "last_name": "CHABANE",
+            "email": "amine.chabane006@gmail.com",
+            "phone_number": "0783030596",
+            "reservation_id": [
+                "AF411-6"
+            ]
+        }
+    ]
+}
