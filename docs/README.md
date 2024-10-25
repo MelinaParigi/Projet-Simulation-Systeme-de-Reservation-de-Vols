@@ -34,6 +34,20 @@ source mon_environnement/bin/activate #pour activer votre environnement
 pip install -r requirements.txt
 ```
 
+## Exécution des Tests
+
+Ce projet utilise `pytest` pour les tests unitaires. Assurez-vous que `pytest` est installé dans votre environnement. Si ce n’est pas le cas, installez-le avec la commande suivante :
+
+```
+pip install pytest
+````
+
+sur un terminal 
+````
+cd <nom-repo-tests>
+pytest
+```
+
 ## Utilisation
 
 Lancez l’application avec la commande suivante :
