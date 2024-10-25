@@ -8,6 +8,7 @@ import json
 from math import radians, sin, cos, sqrt, atan2
 from geopy.geocoders import Nominatim
 from opencage.geocoder import OpenCageGeocode
+import os
 
 
 def init():
@@ -25,7 +26,7 @@ def init():
                         {
                             "numero_vol": f"AF{random.randint(100, 999)}",
                             "places_disponibles": random.randint(50, 200),
-                            "nombre_reservations": 0
+                            "nombre_reservations": 0,
                         }
                         for _ in range(5)
                     ],
@@ -36,7 +37,7 @@ def init():
                         {
                             "numero_vol": f"BA{random.randint(100, 999)}",
                             "places_disponibles": random.randint(50, 200),
-                            "nombre_reservations": 0
+                            "nombre_reservations": 0,
                         }
                         for _ in range(5)
                     ],
@@ -47,7 +48,7 @@ def init():
                         {
                             "numero_vol": f"LH{random.randint(100, 999)}",
                             "places_disponibles": random.randint(50, 200),
-                            "nombre_reservations": 0
+                            "nombre_reservations": 0,
                         }
                         for _ in range(5)
                     ],
@@ -58,7 +59,7 @@ def init():
                         {
                             "numero_vol": f"KL{random.randint(100, 999)}",
                             "places_disponibles": random.randint(50, 200),
-                            "nombre_reservations": 0
+                            "nombre_reservations": 0,
                         }
                         for _ in range(5)
                     ],
@@ -69,7 +70,7 @@ def init():
                         {
                             "numero_vol": f"IB{random.randint(100, 999)}",
                             "places_disponibles": random.randint(50, 200),
-                            "nombre_reservations": 0
+                            "nombre_reservations": 0,
                         }
                         for _ in range(5)
                     ],
@@ -82,7 +83,7 @@ def init():
                         {
                             "numero_vol": f"LA{random.randint(100, 999)}",
                             "places_disponibles": random.randint(50, 200),
-                            "nombre_reservations": 0
+                            "nombre_reservations": 0,
                         }
                         for _ in range(5)
                     ],
@@ -93,7 +94,7 @@ def init():
                         {
                             "numero_vol": f"AV{random.randint(100, 999)}",
                             "places_disponibles": random.randint(50, 200),
-                            "nombre_reservations": 0
+                            "nombre_reservations": 0,
                         }
                         for _ in range(5)
                     ],
@@ -104,7 +105,7 @@ def init():
                         {
                             "numero_vol": f"AM{random.randint(100, 999)}",
                             "places_disponibles": random.randint(50, 200),
-                            "nombre_reservations": 0
+                            "nombre_reservations": 0,
                         }
                         for _ in range(5)
                     ],
@@ -115,7 +116,7 @@ def init():
                         {
                             "numero_vol": f"CM{random.randint(100, 999)}",
                             "places_disponibles": random.randint(50, 200),
-                            "nombre_reservations": 0
+                            "nombre_reservations": 0,
                         }
                         for _ in range(5)
                     ],
@@ -126,7 +127,7 @@ def init():
                         {
                             "numero_vol": f"G3{random.randint(100, 999)}",
                             "places_disponibles": random.randint(50, 200),
-                            "nombre_reservations": 0
+                            "nombre_reservations": 0,
                         }
                         for _ in range(5)
                     ],
@@ -164,6 +165,7 @@ def distance_entre_pays(pays1, pays2):
     else:
         print("Coordonnées non trouvées pour un ou les deux pays.")
         return None
+
 
 # Calcul de la réservation
 def calculate_flight_price(
@@ -218,6 +220,11 @@ def calculate_flight_price(
     return price
 
 
+# Exemple
+# data = init()
+# calculate_flight_price(data, "Air France", "AF123", 3000, 6, "Confort", True)
+
+
 def enregistrer(data):
     with open("data.json", "w") as fichier:
         json.dump(data, fichier, indent=4)
@@ -233,6 +240,7 @@ def estimate_flight_duration(pays_depart, pays_arriver):
     duration = distance / vitesse_moyenne
     return duration
 
+
 def book_flight(data):
     # Étape 1 : Pays de départ et d'arrivée
     pays_depart = input("De quel pays voulez-vous partir ? ")
@@ -244,7 +252,7 @@ def book_flight(data):
         print("Sélectionnez le continent :")
         for i, continent in enumerate(continents, 1):
             print(f"{i}. {continent}")
-        
+
         try:
             continent_choice = int(input("Entrez le numéro du continent : ")) - 1
             if 0 <= continent_choice < len(continents):
@@ -252,7 +260,10 @@ def book_flight(data):
                 break
             else:
                 print("Continent non disponible.")
-                if input("Voulez-vous faire un autre choix ? (oui/non) : ").lower() != "oui":
+                if (
+                    input("Voulez-vous faire un autre choix ? (oui/non) : ").lower()
+                    != "oui"
+                ):
                     print("Réservation annulée.")
                     return
         except ValueError:
@@ -264,26 +275,33 @@ def book_flight(data):
         print("\nCompagnies disponibles :")
         for i, company in enumerate(companies, 1):
             print(f"{i}. {company['name']}")
-        
+
         try:
-            company_choice = int(input("Entrez le numéro de la compagnie aérienne : ")) - 1
+            company_choice = (
+                int(input("Entrez le numéro de la compagnie aérienne : ")) - 1
+            )
             if 0 <= company_choice < len(companies):
                 compagnie = companies[company_choice]
                 break
             else:
                 print("Compagnie non disponible.")
-                if input("Voulez-vous faire un autre choix ? (oui/non) : ").lower() != "oui":
+                if (
+                    input("Voulez-vous faire un autre choix ? (oui/non) : ").lower()
+                    != "oui"
+                ):
                     print("Réservation annulée.")
                     return
         except ValueError:
             print("Veuillez entrer un numéro valide.")
-    
+
     # Étape 4 : Choix du vol
     while True:
         print("\nVols disponibles :")
         for i, vol in enumerate(compagnie["vols"], 1):
-            print(f"{i}. Numéro de vol : {vol['numero_vol']}, Places disponibles : {vol['places_disponibles']}")
-        
+            print(
+                f"{i}. Numéro de vol : {vol['numero_vol']}, Places disponibles : {vol['places_disponibles']}"
+            )
+
         try:
             vol_choice = int(input("Entrez le numéro du vol : ")) - 1
             if 0 <= vol_choice < len(compagnie["vols"]):
@@ -291,7 +309,10 @@ def book_flight(data):
                 break
             else:
                 print("Numéro de vol incorrect.")
-                if input("Voulez-vous faire un autre choix ? (oui/non) : ").lower() != "oui":
+                if (
+                    input("Voulez-vous faire un autre choix ? (oui/non) : ").lower()
+                    != "oui"
+                ):
                     print("Réservation annulée.")
                     return
         except ValueError:
@@ -305,7 +326,10 @@ def book_flight(data):
                 break
             else:
                 print("Désolé, il n'y a pas assez de places disponibles.")
-                if input("Voulez-vous choisir un autre nombre ? (oui/non) : ").lower() != "oui":
+                if (
+                    input("Voulez-vous choisir un autre nombre ? (oui/non) : ").lower()
+                    != "oui"
+                ):
                     print("Réservation annulée.")
                     return
         except ValueError:
@@ -317,7 +341,7 @@ def book_flight(data):
         print("\nSélectionnez la classe :")
         for i, cls in enumerate(classes, 1):
             print(f"{i}. {cls}")
-        
+
         try:
             class_choice = int(input("Entrez le numéro de la classe : ")) - 1
             if 0 <= class_choice < len(classes):
@@ -325,7 +349,10 @@ def book_flight(data):
                 break
             else:
                 print("Classe incorrecte.")
-                if input("Voulez-vous choisir une autre classe ? (oui/non) : ").lower() != "oui":
+                if (
+                    input("Voulez-vous choisir une autre classe ? (oui/non) : ").lower()
+                    != "oui"
+                ):
                     print("Réservation annulée.")
                     return
         except ValueError:
@@ -333,18 +360,47 @@ def book_flight(data):
 
     # Calcul du prix et numéro de réservation
     duration = estimate_flight_duration(pays_depart, pays_arriver)
-    prix_total = calculate_flight_price(data, compagnie["name"], vol["numero_vol"], pays_depart, pays_arriver, duration, classe, seat_selection=False)
-    
+    prix_total = calculate_flight_price(
+        data,
+        compagnie["name"],
+        vol["numero_vol"],
+        pays_depart,
+        pays_arriver,
+        duration,
+        classe,
+        seat_selection=False,
+    )
+
     id_reservation = f"{vol['numero_vol']}-{vol['nombre_reservations'] + 1}"
+    prix_total = calculate_flight_price(
+        data,
+        compagnie["name"],
+        vol["numero_vol"],
+        pays_depart,
+        pays_arriver,
+        duration,
+        classe,
+        seat_selection=False,
+    )
+
+    # reservation_number = f"{vol['numero_vol']}-{vol['nombre_reservations'] + 1}"
 
     # Confirmation de réservation
-    confirmation = input(f"\nLe prix total est de {prix_total:.2f} €. Confirmez-vous la réservation ? (oui/non) : ")
+    confirmation = input(
+        f"\nLe prix total est de {prix_total:.2f} €. Confirmez-vous la réservation ? (oui/non) : "
+    )
     if confirmation.lower() == "oui":
         vol["places_disponibles"] -= nombre_places
-        vol["nombre_reservations"] += 1
+        vol["nombre_reservations"] += nombre_places
         enregistrer(data)
         print(f"\nRéservation confirmée ! Numéro de réservation : {id_reservation}")
-        print(f"{nombre_places} places réservées sur le vol {vol['numero_vol']} avec {compagnie['name']} à {prix_total:.2f} €.")
+        print(
+            f"{nombre_places} places réservées sur le vol {vol['numero_vol']} avec {compagnie['name']} à {prix_total:.2f} €."
+        )
+        # print(f"\nRéservation confirmée ! Numéro de réservation : {reservation_number}")
+        print(
+            f"{nombre_places} places réservées sur le vol {vol['numero_vol']} avec {compagnie['name']} à {prix_total:.2f} €."
+        )
     else:
         print("Réservation annulée.")
 
@@ -385,19 +441,28 @@ def cancel_reservation(data):
     print("Aucun vol ou réservation correspondante trouvée.")
 
 
-if __name__ == "__main__":
-    print()
-    data = init()
-    enregistrer(data)
+def charger_donnees():
+    # Vérifiez si le fichier existe
+    if os.path.exists("data.json"):
+        # Charger les données existantes
+        with open("data.json", "r") as fichier:
+            return json.load(fichier)
+    else:
+        # Si le fichier n'existe pas, créez les données initiales et les sauvegardez dans le fichier JSON
+        data = init()
+        enregistrer(data)
+        return data
 
+
+if __name__ == "__main__":
+
+    data = charger_donnees()
     print("Bienvenu sur notre companie")
-    action = input("que voulez vous faire:")
-    match (action):
-        case "réserver":
-            book_flight(data)
-            # pays_depart = input("entrez le pays de départ : ")
-            # destination = input("entrez votre destination : ")
-            # classe = input("selectionnez la classe du voyage : ")
-        case "annuler":
-            cancel_reservation(data)
-        # case "modifer":
+    while True:
+        action = input("que voulez vous faire:")
+        match (action):
+            case "reserver":
+                book_flight(data)
+            case "quiter":
+                print("Merci Pour votre visite! à bientot")
+                break
