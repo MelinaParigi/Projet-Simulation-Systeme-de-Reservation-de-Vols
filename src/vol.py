@@ -7,6 +7,7 @@ import pycountry
 import json
 from math import radians, sin, cos, sqrt, atan2
 from geopy.geocoders import Nominatim
+from opencage.geocoder import OpenCageGeocode
 
 
 def init():
@@ -126,21 +127,19 @@ def init():
 
 
 # Calcul du prix de vols :
-def distance_entre_pays(pays1, pays2):
-    """Calcule la distance en kilomètres entre les capitales de deux pays."""
-    geolocator = Nominatim(user_agent="geoapiExercises")
+def distance_entre_pays(pays1, pays2, api_key):
+    geocoder = OpenCageGeocode("b5072a154cba4479ba056f5b47d5bd7a")
 
-    # Obtenir les coordonnées des capitales des deux pays
-    location1 = geolocator.geocode(pays1)
-    location2 = geolocator.geocode(pays2)
+    # Obtenir les coordonnées des deux pays
+    result1 = geocoder.geocode(pays1)
+    result2 = geocoder.geocode(pays2)
 
-    if location1 and location2:
-        # Extraire les latitudes et longitudes
-        lat1, lon1 = location1.latitude, location1.longitude
-        lat2, lon2 = location2.latitude, location2.longitude
+    if result1 and result2:
+        lat1, lon1 = result1[0]["geometry"]["lat"], result1[0]["geometry"]["lng"]
+        lat2, lon2 = result2[0]["geometry"]["lat"], result2[0]["geometry"]["lng"]
 
-        # Formule de Haversine
-        R = 6371  # Rayon de la Terre en kilomètres
+        # Calcul de la distance
+        R = 6371  # Rayon de la Terre en km
         dlat = radians(lat2 - lat1)
         dlon = radians(lon2 - lon1)
         a = (
@@ -152,7 +151,7 @@ def distance_entre_pays(pays1, pays2):
 
         return distance
     else:
-        print("Impossible de trouver les coordonnées pour un ou les deux pays.")
+        print("Coordonnées non trouvées pour un ou les deux pays.")
         return None
 
 
@@ -164,12 +163,12 @@ def calculate_flight_price(
     company_name,
     flight_number,
     pays_depart,
-    pays_arrivée,
+    pays_arriver,
     duration,
     travel_class="Economy",
     seat_selection=False,
 ):
-    distance = distance_entre_pays(pays_depart, pays_arrivée)
+    distance = distance_entre_pays(pays_depart, pays_arriver)
     # Tarifs de base pour chaque compagnie
     base_prices = {
         "Air France": 150,
@@ -231,6 +230,5 @@ if __name__ == "__main__":
     match (action):
         case "réserver":
             pays_depart = input("entrez le pays de départ : ")
-            destination = input("entrez votre destination : ")
+            pays_arriver = input("entrez votre destination : ")
             classe = input("selectionnez la classe du voyage : ")
-            select_siege = input("voulez vous choisir votre siége: ")
