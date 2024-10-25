@@ -5,6 +5,9 @@
 # pip install -r requirements.txt
 import pycountry
 import json
+from math import radians, sin, cos, sqrt, atan2
+from geopy.geocoders import Nominatim
+from opencage.geocoder import OpenCageGeocode
 
 
 def init():
@@ -12,7 +15,8 @@ def init():
     import random
 
     data = {
-        "Pays": countries,  # Assurez-vous que 'countries' contient la liste des pays
+        "Pays": countries,
+        "id_reservation": [],  # Assurez-vous que 'countries' contient la liste des pays
         "Company": {
             "Europe": [
                 {
@@ -122,9 +126,50 @@ def init():
     }
     return data
 
-# Calcul du prix de vols :
 
-def calculate_flight_price(data, company_name, flight_number, distance, duration, travel_class="Economy", seat_selection=False):
+# Calcul du prix de vols :
+def distance_entre_pays(pays1, pays2, api_key):
+    geocoder = OpenCageGeocode("b5072a154cba4479ba056f5b47d5bd7a")
+
+    # Obtenir les coordonnées des deux pays
+    result1 = geocoder.geocode(pays1)
+    result2 = geocoder.geocode(pays2)
+
+    if result1 and result2:
+        lat1, lon1 = result1[0]["geometry"]["lat"], result1[0]["geometry"]["lng"]
+        lat2, lon2 = result2[0]["geometry"]["lat"], result2[0]["geometry"]["lng"]
+
+        # Calcul de la distance
+        R = 6371  # Rayon de la Terre en km
+        dlat = radians(lat2 - lat1)
+        dlon = radians(lon2 - lon1)
+        a = (
+            sin(dlat / 2) ** 2
+            + cos(radians(lat1)) * cos(radians(lat2)) * sin(dlon / 2) ** 2
+        )
+        c = 2 * atan2(sqrt(a), sqrt(1 - a))
+        distance = R * c
+
+        return distance
+    else:
+        print("Coordonnées non trouvées pour un ou les deux pays.")
+        return None
+
+
+# Exemple d'utilisation
+
+
+def calculate_flight_price(
+    data,
+    company_name,
+    flight_number,
+    pays_depart,
+    pays_arriver,
+    duration,
+    travel_class="Economy",
+    seat_selection=False,
+):
+    distance = distance_entre_pays(pays_depart, pays_arriver)
     # Tarifs de base pour chaque compagnie
     base_prices = {
         "Air France": 150,
@@ -136,33 +181,33 @@ def calculate_flight_price(data, company_name, flight_number, distance, duration
         "Avianca": 120,
         "Aeroméxico": 125,
         "Copa Airlines": 110,
-        "Gol Linhas Aéreas": 100
+        "Gol Linhas Aéreas": 100,
     }
-    
+
     # Coefficients pour chaque classe de voyage
-    class_factors = {
-        "Economy": 1.0,
-        "Confort": 1.2,
-        "Business": 1.5
-    }
-    
+    class_factors = {"Economy": 1.0, "Confort": 1.2, "Business": 1.5}
+
     # Facteurs pour calculer le prix final
     distance_factor = 0.1  # Coût par kilomètre
     time_factor = 5  # Coût par heure
     seat_extra_fee = 20 if seat_selection else 0
-    
+
     # Récupération du tarif de base de la compagnie
     base_price = base_prices.get(company_name, 150)
-    
+
     # Calcul du prix final
-    price = (base_price + (distance * distance_factor) + (duration * time_factor)) * class_factors[travel_class] + seat_extra_fee
-    
+    price = (
+        base_price + (distance * distance_factor) + (duration * time_factor)
+    ) * class_factors[travel_class] + seat_extra_fee
+
     # Détails du calcul
     print(f"Compagnie : {company_name}, Vol : {flight_number}")
     print(f"Distance : {distance} km, Durée : {duration} heures")
-    print(f"Classe : {travel_class}, Sélection de siège : {'Oui' if seat_selection else 'Non'}")
+    print(
+        f"Classe : {travel_class}, Sélection de siège : {'Oui' if seat_selection else 'Non'}"
+    )
     print(f"Prix calculé : {price:.2f} €")
-    
+
     return price
 
 # Exemple 
