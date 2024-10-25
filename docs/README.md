@@ -26,10 +26,11 @@ Ce projet est un simulateur de réservation de vols permettant de choisir une de
 
 Clonez ce projet et installez les dépendances avec les commandes suivantes :
 
-```bash
+```
 git clone <url-du-repo>
 cd <nom-du-repo>
 pip install -r requirements.txt
+```
 
 ## Utilisation
 
