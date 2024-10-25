@@ -391,7 +391,7 @@ def book_flight(data):
     )
     if confirmation.lower() == "oui":
         vol["places_disponibles"] -= nombre_places
-        vol["nombre_reservations"] += 1
+        vol["nombre_reservations"] += nombre_places
         enregistrer(data)
         print(f"\nRéservation confirmée ! Numéro de réservation : {id_reservation}")
         print(
