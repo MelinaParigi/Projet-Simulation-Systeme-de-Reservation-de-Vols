@@ -36,8 +36,9 @@ pip install -r requirements.txt
 
 Lancez l’application avec la commande suivante :
 
-```bash
+```
 python vol.py
+```
 
 ## Calcul du Prix du Billet 🎫
 
