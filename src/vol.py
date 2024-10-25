@@ -124,7 +124,7 @@ def init():
 
 # Calcul du prix de vols :
 
-def calculate_flight_price(data, company_name, flight_number, distance, duration, travel_class="Economy", seat_selection=False):
+def calculate_flight_price(data, company_name, flight_number, distance, duration, travel_class, seat_selection):
     # Tarifs de base pour chaque compagnie
     base_prices = {
         "Air France": 150,
