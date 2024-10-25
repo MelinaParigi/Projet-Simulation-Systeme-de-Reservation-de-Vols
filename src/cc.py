@@ -32,7 +32,7 @@ def distance_entre_pays(pays1, pays2, api_key):
 
 # Utilisation de la fonction avec votre clé API
 api_key = "b5072a154cba4479ba056f5b47d5bd7a"
-pays1 = "France"
+pays1 = "Canada"
 pays2 = "Japon"
 distance = distance_entre_pays(pays1, pays2, api_key)
 if distance:

@@ -15,7 +15,8 @@ def init():
     import random
 
     data = {
-        "Pays": countries,  # Assurez-vous que 'countries' contient la liste des pays
+        "Pays": countries,
+        "id_reservation": [],  # Assurez-vous que 'countries' contient la liste des pays
         "Company": {
             "Europe": [
                 {
