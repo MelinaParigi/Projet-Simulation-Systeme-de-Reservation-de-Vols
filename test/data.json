@@ -1,5 +1,10 @@
 {
-    "reservation": [],
+    "reservation": [
+        {
+            "id_reservation": "AT123-0",
+            "nombre_personne": 1
+        }
+    ],
     "Company": {
         "Europe": [
             {
@@ -7,7 +12,7 @@
                 "vols": [
                     {
                         "numero_vol": "AT123",
-                        "places_disponibles": 102,
+                        "places_disponibles": 99,
                         "nombre_reservations": 1
                     }
                 ]

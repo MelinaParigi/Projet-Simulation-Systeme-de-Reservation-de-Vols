@@ -1,0 +1,14 @@
+{
+    "users": [
+        {
+            "id_user": "johndoe3388",
+            "first_name": "John",
+            "last_name": "Doe",
+            "email": "john.doe@example.com",
+            "phone_number": "0123456789",
+            "reservation_id": [
+                "AT123-0"
+            ]
+        }
+    ]
+}
