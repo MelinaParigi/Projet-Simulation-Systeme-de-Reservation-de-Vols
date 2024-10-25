@@ -166,13 +166,107 @@ def calculate_flight_price(data, company_name, flight_number, distance, duration
     return price
 
 # Exemple 
-data = init()
-calculate_flight_price(data, "Air France", "AF123", 3000, 6, "Confort", True)
+# data = init()
+# calculate_flight_price(data, "Air France", "AF123", 3000, 6, "Confort", True)
 
 
 def enregistrer(data):
     with open("data.json", "w") as fichier:
         json.dump(data, fichier, indent=4)
+
+
+# Fonction de réservation du vol
+def book_flight(data):
+    while True: 
+        # Sélection du continent
+        continents = list(data["Company"].keys())
+        print("Sélectionnez le continent :")
+        for i, continent in enumerate(continents, 1):
+            print(f"{i}. {continent}")
+        continent_choice = int(input("Entrez le numéro du continent : ")) - 1
+        
+        if continent_choice < 0 or continent_choice >= len(continents):
+            print("Continent non disponible. Voulez-vous réessayer ? (oui/non)")
+            if input().lower() != "oui":
+                print("Réservation annulée.")
+                return
+            continue
+        
+        continent = continents[continent_choice]
+        companies = data["Company"][continent]
+        
+        # Sélection de la compagnie
+        print("\nCompagnies disponibles :")
+        for i, company in enumerate(companies, 1):
+            print(f"{i}. {company['name']}")
+        company_choice = int(input("Entrez le numéro de la compagnie aérienne : ")) - 1
+        
+        if company_choice < 0 or company_choice >= len(companies):
+            print("Compagnie non disponible. Voulez-vous réessayer ? (oui/non)")
+            if input().lower() != "oui":
+                print("Réservation annulée.")
+                return
+            continue
+        
+        compagnie = companies[company_choice]
+
+        # Sélection du vol
+        print("\nVols disponibles :")
+        for i, vol in enumerate(compagnie["vols"], 1):
+            print(f"{i}. Numéro de vol : {vol['numero_vol']}, Places disponibles : {vol['places_disponibles']}")
+        vol_choice = int(input("Entrez le numéro du vol : ")) - 1
+        
+        if vol_choice < 0 or vol_choice >= len(compagnie["vols"]):
+            print("Numéro de vol incorrect. Voulez-vous réessayer ? (oui/non)")
+            if input().lower() != "oui":
+                print("Réservation annulée.")
+                return
+            continue
+        
+        vol = compagnie["vols"][vol_choice]
+
+        # Vérification des places disponibles
+        nombre_places = int(input("\nCombien de places voulez-vous réserver ? "))
+        if nombre_places > vol["places_disponibles"]:
+            print("Désolé, il n'y a pas assez de places disponibles. Voulez-vous choisir un autre nombre ? (oui/non)")
+            if input().lower() != "oui":
+                print("Réservation annulée.")
+                return
+            continue
+
+        # Sélection de la classe
+        classes = ["Economy", "Confort", "Business"]
+        print("\nSélectionnez la classe :")
+        for i, cls in enumerate(classes, 1):
+            print(f"{i}. {cls}")
+        class_choice = int(input("Entrez le numéro de la classe : ")) - 1
+        
+        if class_choice < 0 or class_choice >= len(classes):
+            print("Classe incorrect. Voulez-vous choisir une autre classe ? (oui/non)")
+            if input().lower() != "oui":
+                print("Réservation annulée.")
+                return
+            continue
+        
+        classe = classes[class_choice]
+        
+        # Autres informations
+        distance = int(input("\nEntrez la distance du vol (en km) : "))
+        duration = int(input("Entrez la durée du vol (en heures) : "))
+        seat_selection = input("Voulez-vous sélectionner votre siège ? (oui/non) : ").strip().lower() == "oui"
+        
+        # Calcul et confirmation du prix
+        prix_total = calculate_flight_price(data, compagnie["name"], vol["numero_vol"], distance, duration, classe, seat_selection)
+        confirmation = input(f"\nLe prix total est de {prix_total:.2f} €. Confirmez-vous la réservation ? (oui/non) : ")
+        
+        if confirmation.lower() == "oui":
+            vol["places_disponibles"] -= nombre_places
+            enregistrer(data)
+            print(f"\nRéservation confirmée pour {nombre_places} places sur le vol {vol['numero_vol']} avec {compagnie['name']}.")
+            print(f"Prix total : {prix_total:.2f} €.")
+        else:
+            print("Réservation annulée.")
+
 
 
 if __name__ == "__main__":
@@ -184,6 +278,7 @@ if __name__ == "__main__":
     action = input("que voulez vous faire:")
     match (action):
         case "réserver":
-            pays_depart = input("entrez le pays de départ : ")
-            destination = input("entrez votre destination : ")
-            classe = input("selectionnez la classe du voyage : ")
+            book_flight(data)
+            # pays_depart = input("entrez le pays de départ : ")
+            # destination = input("entrez votre destination : ")
+            # classe = input("selectionnez la classe du voyage : ")
