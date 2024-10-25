@@ -1,5 +1,3 @@
-
-
 ---
 
 # Simulateur de Réservation de Vols ✈️
@@ -35,9 +33,7 @@ La formule pour calculer le prix du billet prend en compte plusieurs éléments 
 
 Voici la formule pour calculer le prix final :
 
-\[
-\text{Prix Final} = \left( \text{Tarif de Base Compagnie} + (\text{Distance} \times \text{Facteur Distance}) + (\text{Durée} \times \text{Facteur Temps}) \right) \times \text{Facteur Classe} + \text{Supplément Siège}
-\]
+**Prix Final** = (Tarif de Base Compagnie + (Distance × Facteur Distance) + (Durée × Facteur Temps)) × Facteur Classe + Supplément Siège
 
 #### Détails de la Formule
 
@@ -92,4 +88,3 @@ Merci d'avoir choisi notre service !
 ```
 
 ---
-
