@@ -123,3 +123,51 @@ def init():
         },
     }
     return data
+
+# Calcul du prix de vols :
+
+def calculate_flight_price(data, company_name, flight_number, distance, duration, travel_class="Economy", seat_selection=False):
+    # Tarifs de base pour chaque compagnie
+    base_prices = {
+        "Air France": 150,
+        "British Airways": 180,
+        "Lufthansa": 170,
+        "KLM Royal Dutch Airlines": 160,
+        "Iberia": 140,
+        "LATAM Airlines": 130,
+        "Avianca": 120,
+        "Aeroméxico": 125,
+        "Copa Airlines": 110,
+        "Gol Linhas Aéreas": 100
+    }
+    
+    # Coefficients pour chaque classe de voyage
+    class_factors = {
+        "Economy": 1.0,
+        "Confort": 1.2,
+        "Business": 1.5
+    }
+    
+    # Facteurs pour calculer le prix final
+    distance_factor = 0.1  # Coût par kilomètre
+    time_factor = 5  # Coût par heure
+    seat_extra_fee = 20 if seat_selection else 0
+    
+    # Récupération du tarif de base de la compagnie
+    base_price = base_prices.get(company_name, 150)
+    
+    # Calcul du prix final
+    price = (base_price + (distance * distance_factor) + (duration * time_factor)) * class_factors[travel_class] + seat_extra_fee
+    
+    # Détails du calcul
+    print(f"Compagnie : {company_name}, Vol : {flight_number}")
+    print(f"Distance : {distance} km, Durée : {duration} heures")
+    print(f"Classe : {travel_class}, Sélection de siège : {'Oui' if seat_selection else 'Non'}")
+    print(f"Prix calculé : {price:.2f} €")
+    
+    return price
+
+# Exemple 
+data = init()
+calculate_flight_price(data, "Air France", "AF123", 3000, 6, "Confort", True)
+
