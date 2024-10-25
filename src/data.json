@@ -1,0 +1,509 @@
+{
+    "Pays": [
+        "Aruba",
+        "Afghanistan",
+        "Angola",
+        "Anguilla",
+        "\u00c5land Islands",
+        "Albania",
+        "Andorra",
+        "United Arab Emirates",
+        "Argentina",
+        "Armenia",
+        "American Samoa",
+        "Antarctica",
+        "French Southern Territories",
+        "Antigua and Barbuda",
+        "Australia",
+        "Austria",
+        "Azerbaijan",
+        "Burundi",
+        "Belgium",
+        "Benin",
+        "Bonaire, Sint Eustatius and Saba",
+        "Burkina Faso",
+        "Bangladesh",
+        "Bulgaria",
+        "Bahrain",
+        "Bahamas",
+        "Bosnia and Herzegovina",
+        "Saint Barth\u00e9lemy",
+        "Belarus",
+        "Belize",
+        "Bermuda",
+        "Bolivia, Plurinational State of",
+        "Brazil",
+        "Barbados",
+        "Brunei Darussalam",
+        "Bhutan",
+        "Bouvet Island",
+        "Botswana",
+        "Central African Republic",
+        "Canada",
+        "Cocos (Keeling) Islands",
+        "Switzerland",
+        "Chile",
+        "China",
+        "C\u00f4te d'Ivoire",
+        "Cameroon",
+        "Congo, The Democratic Republic of the",
+        "Congo",
+        "Cook Islands",
+        "Colombia",
+        "Comoros",
+        "Cabo Verde",
+        "Costa Rica",
+        "Cuba",
+        "Cura\u00e7ao",
+        "Christmas Island",
+        "Cayman Islands",
+        "Cyprus",
+        "Czechia",
+        "Germany",
+        "Djibouti",
+        "Dominica",
+        "Denmark",
+        "Dominican Republic",
+        "Algeria",
+        "Ecuador",
+        "Egypt",
+        "Eritrea",
+        "Western Sahara",
+        "Spain",
+        "Estonia",
+        "Ethiopia",
+        "Finland",
+        "Fiji",
+        "Falkland Islands (Malvinas)",
+        "France",
+        "Faroe Islands",
+        "Micronesia, Federated States of",
+        "Gabon",
+        "United Kingdom",
+        "Georgia",
+        "Guernsey",
+        "Ghana",
+        "Gibraltar",
+        "Guinea",
+        "Guadeloupe",
+        "Gambia",
+        "Guinea-Bissau",
+        "Equatorial Guinea",
+        "Greece",
+        "Grenada",
+        "Greenland",
+        "Guatemala",
+        "French Guiana",
+        "Guam",
+        "Guyana",
+        "Hong Kong",
+        "Heard Island and McDonald Islands",
+        "Honduras",
+        "Croatia",
+        "Haiti",
+        "Hungary",
+        "Indonesia",
+        "Isle of Man",
+        "India",
+        "British Indian Ocean Territory",
+        "Ireland",
+        "Iran, Islamic Republic of",
+        "Iraq",
+        "Iceland",
+        "Israel",
+        "Italy",
+        "Jamaica",
+        "Jersey",
+        "Jordan",
+        "Japan",
+        "Kazakhstan",
+        "Kenya",
+        "Kyrgyzstan",
+        "Cambodia",
+        "Kiribati",
+        "Saint Kitts and Nevis",
+        "Korea, Republic of",
+        "Kuwait",
+        "Lao People's Democratic Republic",
+        "Lebanon",
+        "Liberia",
+        "Libya",
+        "Saint Lucia",
+        "Liechtenstein",
+        "Sri Lanka",
+        "Lesotho",
+        "Lithuania",
+        "Luxembourg",
+        "Latvia",
+        "Macao",
+        "Saint Martin (French part)",
+        "Morocco",
+        "Monaco",
+        "Moldova, Republic of",
+        "Madagascar",
+        "Maldives",
+        "Mexico",
+        "Marshall Islands",
+        "North Macedonia",
+        "Mali",
+        "Malta",
+        "Myanmar",
+        "Montenegro",
+        "Mongolia",
+        "Northern Mariana Islands",
+        "Mozambique",
+        "Mauritania",
+        "Montserrat",
+        "Martinique",
+        "Mauritius",
+        "Malawi",
+        "Malaysia",
+        "Mayotte",
+        "Namibia",
+        "New Caledonia",
+        "Niger",
+        "Norfolk Island",
+        "Nigeria",
+        "Nicaragua",
+        "Niue",
+        "Netherlands",
+        "Norway",
+        "Nepal",
+        "Nauru",
+        "New Zealand",
+        "Oman",
+        "Pakistan",
+        "Panama",
+        "Pitcairn",
+        "Peru",
+        "Philippines",
+        "Palau",
+        "Papua New Guinea",
+        "Poland",
+        "Puerto Rico",
+        "Korea, Democratic People's Republic of",
+        "Portugal",
+        "Paraguay",
+        "Palestine, State of",
+        "French Polynesia",
+        "Qatar",
+        "R\u00e9union",
+        "Romania",
+        "Russian Federation",
+        "Rwanda",
+        "Saudi Arabia",
+        "Sudan",
+        "Senegal",
+        "Singapore",
+        "South Georgia and the South Sandwich Islands",
+        "Saint Helena, Ascension and Tristan da Cunha",
+        "Svalbard and Jan Mayen",
+        "Solomon Islands",
+        "Sierra Leone",
+        "El Salvador",
+        "San Marino",
+        "Somalia",
+        "Saint Pierre and Miquelon",
+        "Serbia",
+        "South Sudan",
+        "Sao Tome and Principe",
+        "Suriname",
+        "Slovakia",
+        "Slovenia",
+        "Sweden",
+        "Eswatini",
+        "Sint Maarten (Dutch part)",
+        "Seychelles",
+        "Syrian Arab Republic",
+        "Turks and Caicos Islands",
+        "Chad",
+        "Togo",
+        "Thailand",
+        "Tajikistan",
+        "Tokelau",
+        "Turkmenistan",
+        "Timor-Leste",
+        "Tonga",
+        "Trinidad and Tobago",
+        "Tunisia",
+        "T\u00fcrkiye",
+        "Tuvalu",
+        "Taiwan, Province of China",
+        "Tanzania, United Republic of",
+        "Uganda",
+        "Ukraine",
+        "United States Minor Outlying Islands",
+        "Uruguay",
+        "United States",
+        "Uzbekistan",
+        "Holy See (Vatican City State)",
+        "Saint Vincent and the Grenadines",
+        "Venezuela, Bolivarian Republic of",
+        "Virgin Islands, British",
+        "Virgin Islands, U.S.",
+        "Viet Nam",
+        "Vanuatu",
+        "Wallis and Futuna",
+        "Samoa",
+        "Yemen",
+        "South Africa",
+        "Zambia",
+        "Zimbabwe"
+    ],
+    "Company": {
+        "Europe": [
+            {
+                "name": "Air France",
+                "vols": [
+                    {
+                        "numero_vol": "AF721",
+                        "places_disponibles": 110
+                    },
+                    {
+                        "numero_vol": "AF349",
+                        "places_disponibles": 63
+                    },
+                    {
+                        "numero_vol": "AF775",
+                        "places_disponibles": 112
+                    },
+                    {
+                        "numero_vol": "AF750",
+                        "places_disponibles": 78
+                    },
+                    {
+                        "numero_vol": "AF140",
+                        "places_disponibles": 114
+                    }
+                ]
+            },
+            {
+                "name": "British Airways",
+                "vols": [
+                    {
+                        "numero_vol": "BA212",
+                        "places_disponibles": 96
+                    },
+                    {
+                        "numero_vol": "BA197",
+                        "places_disponibles": 196
+                    },
+                    {
+                        "numero_vol": "BA541",
+                        "places_disponibles": 106
+                    },
+                    {
+                        "numero_vol": "BA452",
+                        "places_disponibles": 98
+                    },
+                    {
+                        "numero_vol": "BA876",
+                        "places_disponibles": 141
+                    }
+                ]
+            },
+            {
+                "name": "Lufthansa",
+                "vols": [
+                    {
+                        "numero_vol": "LH645",
+                        "places_disponibles": 196
+                    },
+                    {
+                        "numero_vol": "LH548",
+                        "places_disponibles": 80
+                    },
+                    {
+                        "numero_vol": "LH884",
+                        "places_disponibles": 87
+                    },
+                    {
+                        "numero_vol": "LH701",
+                        "places_disponibles": 61
+                    },
+                    {
+                        "numero_vol": "LH315",
+                        "places_disponibles": 152
+                    }
+                ]
+            },
+            {
+                "name": "KLM Royal Dutch Airlines",
+                "vols": [
+                    {
+                        "numero_vol": "KL816",
+                        "places_disponibles": 87
+                    },
+                    {
+                        "numero_vol": "KL603",
+                        "places_disponibles": 191
+                    },
+                    {
+                        "numero_vol": "KL784",
+                        "places_disponibles": 175
+                    },
+                    {
+                        "numero_vol": "KL651",
+                        "places_disponibles": 183
+                    },
+                    {
+                        "numero_vol": "KL408",
+                        "places_disponibles": 67
+                    }
+                ]
+            },
+            {
+                "name": "Iberia",
+                "vols": [
+                    {
+                        "numero_vol": "IB308",
+                        "places_disponibles": 180
+                    },
+                    {
+                        "numero_vol": "IB705",
+                        "places_disponibles": 142
+                    },
+                    {
+                        "numero_vol": "IB609",
+                        "places_disponibles": 82
+                    },
+                    {
+                        "numero_vol": "IB906",
+                        "places_disponibles": 102
+                    },
+                    {
+                        "numero_vol": "IB637",
+                        "places_disponibles": 69
+                    }
+                ]
+            }
+        ],
+        "Am\u00e9rique Latine": [
+            {
+                "name": "LATAM Airlines",
+                "vols": [
+                    {
+                        "numero_vol": "LA725",
+                        "places_disponibles": 94
+                    },
+                    {
+                        "numero_vol": "LA967",
+                        "places_disponibles": 137
+                    },
+                    {
+                        "numero_vol": "LA437",
+                        "places_disponibles": 98
+                    },
+                    {
+                        "numero_vol": "LA282",
+                        "places_disponibles": 184
+                    },
+                    {
+                        "numero_vol": "LA949",
+                        "places_disponibles": 85
+                    }
+                ]
+            },
+            {
+                "name": "Avianca",
+                "vols": [
+                    {
+                        "numero_vol": "AV264",
+                        "places_disponibles": 144
+                    },
+                    {
+                        "numero_vol": "AV201",
+                        "places_disponibles": 89
+                    },
+                    {
+                        "numero_vol": "AV628",
+                        "places_disponibles": 169
+                    },
+                    {
+                        "numero_vol": "AV693",
+                        "places_disponibles": 103
+                    },
+                    {
+                        "numero_vol": "AV258",
+                        "places_disponibles": 108
+                    }
+                ]
+            },
+            {
+                "name": "Aerom\u00e9xico",
+                "vols": [
+                    {
+                        "numero_vol": "AM774",
+                        "places_disponibles": 166
+                    },
+                    {
+                        "numero_vol": "AM484",
+                        "places_disponibles": 106
+                    },
+                    {
+                        "numero_vol": "AM844",
+                        "places_disponibles": 112
+                    },
+                    {
+                        "numero_vol": "AM281",
+                        "places_disponibles": 190
+                    },
+                    {
+                        "numero_vol": "AM369",
+                        "places_disponibles": 133
+                    }
+                ]
+            },
+            {
+                "name": "Copa Airlines",
+                "vols": [
+                    {
+                        "numero_vol": "CM918",
+                        "places_disponibles": 133
+                    },
+                    {
+                        "numero_vol": "CM942",
+                        "places_disponibles": 113
+                    },
+                    {
+                        "numero_vol": "CM628",
+                        "places_disponibles": 161
+                    },
+                    {
+                        "numero_vol": "CM162",
+                        "places_disponibles": 192
+                    },
+                    {
+                        "numero_vol": "CM290",
+                        "places_disponibles": 181
+                    }
+                ]
+            },
+            {
+                "name": "Gol Linhas A\u00e9reas",
+                "vols": [
+                    {
+                        "numero_vol": "G3531",
+                        "places_disponibles": 120
+                    },
+                    {
+                        "numero_vol": "G3471",
+                        "places_disponibles": 136
+                    },
+                    {
+                        "numero_vol": "G3113",
+                        "places_disponibles": 150
+                    },
+                    {
+                        "numero_vol": "G3411",
+                        "places_disponibles": 154
+                    },
+                    {
+                        "numero_vol": "G3144",
+                        "places_disponibles": 101
+                    }
+                ]
+            }
+        ]
+    }
+}
