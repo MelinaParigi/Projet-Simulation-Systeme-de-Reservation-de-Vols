@@ -252,15 +252,15 @@
     ],
     "reservation": [
         {
-            "id_reservation": "AF403-18",
+            "id_reservation": "AV216-0",
+            "nombre_personne": 2
+        },
+        {
+            "id_reservation": "AM267-0",
             "nombre_personne": 1
         },
         {
-            "id_reservation": "CM508-0",
-            "nombre_personne": 3
-        },
-        {
-            "id_reservation": "AF403-19",
+            "id_reservation": "AM267-1",
             "nombre_personne": 1
         }
     ],
@@ -271,7 +271,7 @@
                 "vols": [
                     {
                         "numero_vol": "AF403",
-                        "places_disponibles": 95,
+                        "places_disponibles": 96,
                         "nombre_reservations": 20
                     },
                     {
@@ -458,8 +458,8 @@
                     },
                     {
                         "numero_vol": "AV216",
-                        "places_disponibles": 113,
-                        "nombre_reservations": 0
+                        "places_disponibles": 111,
+                        "nombre_reservations": 2
                     },
                     {
                         "numero_vol": "AV938",
@@ -503,8 +503,8 @@
                     },
                     {
                         "numero_vol": "AM267",
-                        "places_disponibles": 147,
-                        "nombre_reservations": 0
+                        "places_disponibles": 145,
+                        "nombre_reservations": 2
                     }
                 ]
             },
@@ -528,7 +528,7 @@
                     },
                     {
                         "numero_vol": "CM508",
-                        "places_disponibles": 171,
+                        "places_disponibles": 174,
                         "nombre_reservations": 3
                     },
                     {

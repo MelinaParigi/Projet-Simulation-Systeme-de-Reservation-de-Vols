@@ -50,6 +50,36 @@
             "reservation_id": [
                 "AF403-19"
             ]
+        },
+        {
+            "id_user": "veromori1768",
+            "first_name": "Vero",
+            "last_name": "Mori",
+            "email": "vero@gmail.Com",
+            "phone_number": "0202020505",
+            "reservation_id": [
+                "AV216-0"
+            ]
+        },
+        {
+            "id_user": "hervebobo2293",
+            "first_name": "Herve",
+            "last_name": "Bobo",
+            "email": "bobo@gmail.com",
+            "phone_number": "0404040405",
+            "reservation_id": [
+                "AM267-0"
+            ]
+        },
+        {
+            "id_user": "sachatiti1993",
+            "first_name": "Sacha",
+            "last_name": "Titi",
+            "email": "sacha.com",
+            "phone_number": "0203020506",
+            "reservation_id": [
+                "AM267-1"
+            ]
         }
     ]
 }

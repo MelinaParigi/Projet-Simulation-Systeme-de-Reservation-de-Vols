@@ -632,6 +632,8 @@ def cancel_reservation(data):
                                 nombre_personne = reservation["nombre_personne"]
                                 vol["places_disponibles"] += nombre_personne
 
+                                delete_reservation_from_csv(id_reservation)
+
                                 data["reservation"].remove(reservation)
                                 enregistrer(data)
                                 print(
@@ -647,6 +649,37 @@ def cancel_reservation(data):
 
     if not correspondance_vol:
         print("Numéro de vol introuvable.")
+
+def delete_reservation_from_csv(id_reservation, filename='reservations.csv'):
+    """
+    Suppression d'une réservation du fichier CSV.
+
+    Paramètres:
+    id_reservation: L'ID de la réservation à supprimer.
+    filename: Le nom du fichier CSV d'où supprimer la réservation.
+    
+    """
+    # Lis toutes les réservations dans le fichier CSV
+    with open(filename, mode='r', newline='', encoding='utf-8') as file:
+        reader = csv.DictReader(file)
+        reservations = [row for row in reader if row['id_reservation'] != id_reservation]
+
+    # Vérifie s'il reste des réservations
+    if not reservations:
+        # Si aucune réservation ne reste, on crée un fichier vide avec seulement les en-têtes
+        with open(filename, mode='w', newline='', encoding='utf-8') as file:
+            fieldnames = ['id_reservation', 'first_name', 'last_name', 'email', 'phone_number', 'pays_depart', 'pays_arriver', 'classe', 'prix_total']
+            writer = csv.DictWriter(file, fieldnames=fieldnames)
+            writer.writeheader()
+        return
+
+    # Réécrire le fichier CSV sans la réservation annulée
+    with open(filename, mode='w', newline='', encoding='utf-8') as file:
+        fieldnames = reservations[0].keys()  # Prendre les clés du premier enregistrement restant
+        writer = csv.DictWriter(file, fieldnames=fieldnames)
+
+        writer.writeheader()
+        writer.writerows(reservations)
 
 
 def charger_donnees():

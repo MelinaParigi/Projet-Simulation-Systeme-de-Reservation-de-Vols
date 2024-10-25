@@ -1,5 +1,2 @@
 id_reservation,first_name,last_name,email,phone_number,pays_depart,pays_arriver,classe,prix_total
-AF403-18,John,Doe,johndoe@gmail.com,0205040605,France,Malta,Economy,317.2148844411214
-CM508-0,Test,test,test@gmail.com,0504060504,France,Italie,Confort,253.5539666792116
-CM444-0,Jojo,jiji,jijijojo@gmail.com,0102040507,France,Italie,Confort,253.5539666792116
-AF403-19,Alex,Jean,jean@gmail.Com,0202020202,Espagne,Portugal,Economy,180.12360960012236
+AM267-1,Sacha,Titi,sacha.com,0203020506,France,Japon,Confort,1395.712811535842
