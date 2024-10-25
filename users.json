@@ -1,0 +1,15 @@
+{
+    "users": [
+        {
+            "id_user": "melinaparigi2023",
+            "first_name": "Melina",
+            "last_name": "Parigi",
+            "email": "test@test.com",
+            "phone_number": "0102030405",
+            "reservation_id": [
+                "AF403-10",
+                "AF403-13"
+            ]
+        }
+    ]
+}

@@ -11,6 +11,8 @@ from opencage.geocoder import OpenCageGeocode
 import os
 import random
 
+from users import init_users, ajouter_utilisateur
+
 
 def init():
     """
@@ -402,6 +404,14 @@ def book_flight(data):
 
     id_reservation = f"{vol['numero_vol']}-{vol['nombre_reservations']}"
 
+    # Information users 
+    first_name = input("Entrez votre prénom : ")
+    last_name = input("Entrez votre nom : ")
+    email = input("Entrez votre email : ")
+    phone_number = input("Entrez votre numéro de téléphone : ")
+
+    users_data = init_users()
+
     # Confirmation de réservation
     confirmation = input(
         f"\nLe prix total est de {prix_total:.2f} €. Confirmez-vous la réservation ? (oui/non) : "
@@ -413,10 +423,8 @@ def book_flight(data):
             {"id_reservation": id_reservation, "nombre_personne": nombre_places}
         )
         enregistrer(data)
-        print(f"\nRéservation confirmée ! Numéro de réservation : {id_reservation}")
-        print(
-            f"{nombre_places} places réservées sur le vol {vol['numero_vol']} avec {compagnie['name']} à {prix_total:.2f} €."
-        )
+        ajouter_utilisateur(users_data, first_name, last_name, email, phone_number, id_reservation)
+
         print(f"\nRéservation confirmée ! Numéro de réservation : {id_reservation}")
         print(
             f"""
