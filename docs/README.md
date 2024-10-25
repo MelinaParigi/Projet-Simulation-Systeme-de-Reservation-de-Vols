@@ -24,11 +24,13 @@ Ce projet est un simulateur de réservation de vols permettant de choisir une de
 
 ### Installation
 
-Clonez ce projet et installez les dépendances avec les commandes suivantes :
+Clonez ce projet et créé un environement pour votre projet et installez les dépendances avec les commandes suivantes  :
 
 ```
 git clone <url-du-repo>
 cd <nom-du-repo>
+python3 -m venv mon_environnement #crée votre environement environnement
+source mon_environnement/bin/activate #pour activer votre environnement 
 pip install -r requirements.txt
 ```
 
